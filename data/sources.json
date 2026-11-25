@@ -1,0 +1,857 @@
+[
+  {
+    "publisher": "LinkedIn",
+    "website": "https://www.linkedin.com",
+    "categories": [
+      "Signals Intelligence",
+      "GNSS Interference",
+      "Radar Imaging",
+      "Satellite Data Processing",
+      "Earth Observation",
+      "Maritime Surveillance",
+      "Satellite Manufacturing",
+      "Satellite Launches",
+      "Satellite Communications",
+      "Military Space",
+      "Sovereign Space Capabilities",
+      "European Defense Industry",
+      "Defense Cooperation",
+      "Defense Procurement",
+      "AI & Data Analytics",
+      "Space Policy",
+      "Space Industry Funding",
+      "Industry Events"
+    ]
+  },
+  {
+    "publisher": "X",
+    "website": "https://x.com",
+    "categories": [
+      "Arms Transfers",
+      "Surveillance Drones",
+      "Military Space",
+      "Sovereign Space Capabilities",
+      "Counterspace Activity"
+    ]
+  },
+  {
+    "publisher": "Nxtbook",
+    "website": "https://www.nxtbookmedia.com",
+    "categories": [
+      "Counter-Drone Systems",
+      "RF Geolocation"
+    ]
+  },
+  {
+    "publisher": "ISR University",
+    "website": "https://isruniversity.com",
+    "categories": [
+      "Space Domain Awareness",
+      "Space Industry Analysis",
+      "Intelligence & Reconnaissance"
+    ]
+  },
+  {
+    "publisher": "Aerospacelab",
+    "website": "https://aerospacelab.com",
+    "categories": [
+      "Satellite Manufacturing",
+      "Satellite Communications",
+      "Government Contracts"
+    ]
+  },
+  {
+    "publisher": "AInvest",
+    "website": "https://ainvest.com",
+    "categories": [
+      "Signals Intelligence",
+      "Satellite Technology"
+    ]
+  },
+  {
+    "publisher": "Air & Space Forces Magazine",
+    "website": "https://airandspaceforces.com",
+    "categories": [
+      "Military Space",
+      "Government Contracts"
+    ]
+  },
+  {
+    "publisher": "Airbus",
+    "website": "https://airbus.com",
+    "categories": [
+      "Signals Intelligence",
+      "Sovereign Space Capabilities",
+      "Earth Observation",
+      "Maritime Surveillance"
+    ]
+  },
+  {
+    "publisher": "Arab Times",
+    "website": "https://arabtimesonline.com",
+    "categories": [
+      "Diplomacy"
+    ]
+  },
+  {
+    "publisher": "BAE Systems",
+    "website": "https://baesystems.com",
+    "categories": [
+      "Military Navigation",
+      "Defense Procurement"
+    ]
+  },
+  {
+    "publisher": "BlackSky",
+    "website": "https://blacksky.com",
+    "categories": [
+      "Mergers & Acquisitions",
+      "Signals Intelligence",
+      "AI & Data Analytics",
+      "Financial Results"
+    ]
+  },
+  {
+    "publisher": "Bloomberg",
+    "website": "https://bloomberg.com",
+    "categories": [
+      "Space Industry Funding"
+    ]
+  },
+  {
+    "publisher": "Breaking Defense",
+    "website": "https://breakingdefense.com",
+    "categories": [
+      "Mergers & Acquisitions",
+      "Military Space",
+      "Defense Procurement",
+      "Space Surveillance",
+      "Earth Observation",
+      "Export Controls"
+    ]
+  },
+  {
+    "publisher": "Times-Online Business",
+    "website": "https://business.times-online.com",
+    "categories": [
+      "Space Industry Funding",
+      "Satellite Navigation"
+    ]
+  },
+  {
+    "publisher": "Business Wire",
+    "website": "https://businesswire.com",
+    "categories": [
+      "Satellite Launches",
+      "Satellite Manufacturing",
+      "Signals Intelligence",
+      "Counter-Drone Systems",
+      "Defense Procurement"
+    ]
+  },
+  {
+    "publisher": "C4ISRNET",
+    "website": "https://c4isrnet.com",
+    "categories": [
+      "Geospatial Intelligence",
+      "Military Intelligence"
+    ]
+  },
+  {
+    "publisher": "CBS News",
+    "website": "https://cbsnews.com",
+    "categories": [
+      "Satellite Launches",
+      "Satellite Broadband"
+    ]
+  },
+  {
+    "publisher": "China Daily",
+    "website": "https://chinadaily.com.cn",
+    "categories": [
+      "Satellite Launches",
+      "International Space Cooperation"
+    ]
+  },
+  {
+    "publisher": "CNN",
+    "website": "https://cnn.com",
+    "categories": [
+      "Satellite Manufacturing",
+      "Sovereign Space Capabilities"
+    ]
+  },
+  {
+    "publisher": "Defense News",
+    "website": "https://defensenews.com",
+    "categories": [
+      "Defense Procurement",
+      "Earth Observation",
+      "Radar Imaging",
+      "Weapons Intelligence Sharing"
+    ]
+  },
+  {
+    "publisher": "DefenseScoop",
+    "website": "https://defensescoop.com",
+    "categories": [
+      "Military Space",
+      "Airborne Target Tracking",
+      "Defense Procurement"
+    ]
+  },
+  {
+    "publisher": "Drop Site News",
+    "website": "https://dropsitenews.com",
+    "categories": [
+      "Surveillance Drones",
+      "Arms Transfers"
+    ]
+  },
+  {
+    "publisher": "European Space Agency",
+    "website": "https://esa.int",
+    "categories": [
+      "Earth Observation",
+      "Signals Intelligence"
+    ]
+  },
+  {
+    "publisher": "Il Sole 24 Ore",
+    "website": "https://en.ilsole24ore.com",
+    "categories": [
+      "Mergers & Acquisitions",
+      "Foreign Investment Screening"
+    ]
+  },
+  {
+    "publisher": "ERA",
+    "website": "https://era.aero",
+    "categories": [
+      "Defense Industry Partnerships"
+    ]
+  },
+  {
+    "publisher": "European Spaceflight",
+    "website": "https://europeanspaceflight.com",
+    "categories": [
+      "GNSS Interference"
+    ]
+  },
+  {
+    "publisher": "Yahoo Finance",
+    "website": "https://finance.yahoo.com",
+    "categories": [
+      "Satellite Launches",
+      "Satellite Manufacturing"
+    ]
+  },
+  {
+    "publisher": "GlobeNewswire",
+    "website": "https://globenewswire.com",
+    "categories": [
+      "Defense Procurement",
+      "Satellite Communications"
+    ]
+  },
+  {
+    "publisher": "GomSpace",
+    "website": "https://gomspace.com",
+    "categories": [
+      "Satellite Manufacturing",
+      "Commercial Satellite Contracts"
+    ]
+  },
+  {
+    "publisher": "UK Government",
+    "website": "https://gov.uk",
+    "categories": [
+      "Military Space",
+      "Satellite Launches",
+      "Defense Spending"
+    ]
+  },
+  {
+    "publisher": "Grosswald",
+    "website": "https://grosswald.org",
+    "categories": [
+      "Radar Imaging",
+      "Military Space",
+      "Sovereign Space Capabilities"
+    ]
+  },
+  {
+    "publisher": "Haaretz",
+    "website": "https://haaretz.com",
+    "categories": [
+      "Arms Transfers",
+      "Middle East Defense Cooperation"
+    ]
+  },
+  {
+    "publisher": "ICEYE",
+    "website": "https://iceye.com",
+    "categories": [
+      "Radar Imaging",
+      "Disaster Monitoring",
+      "Sovereign Space Capabilities",
+      "Satellite Communications",
+      "Satellite Launches",
+      "Mergers & Acquisitions",
+      "Space Industry Funding",
+      "International Expansion",
+      "Critical Infrastructure"
+    ]
+  },
+  {
+    "publisher": "Intelligence Community News",
+    "website": "https://intelligencecommunitynews.com",
+    "categories": [
+      "Maritime Surveillance"
+    ]
+  },
+  {
+    "publisher": "Interesting Engineering",
+    "website": "https://interestingengineering.com",
+    "categories": [
+      "Signals Intelligence",
+      "Satellite Launches"
+    ]
+  },
+  {
+    "publisher": "Investing.com",
+    "website": "https://investing.com",
+    "categories": [
+      "Government Contracts",
+      "Market Reaction"
+    ]
+  },
+  {
+    "publisher": "Iridium",
+    "website": "https://investor.iridium.com",
+    "categories": [
+      "Mergers & Acquisitions",
+      "Satellite Communications"
+    ]
+  },
+  {
+    "publisher": "HawkEye 360",
+    "website": "https://investors.he360.com",
+    "categories": [
+      "Maritime Surveillance",
+      "Signals Intelligence",
+      "Government Contracts"
+    ]
+  },
+  {
+    "publisher": "Planet",
+    "website": "https://planet.com",
+    "categories": [
+      "Maritime Surveillance",
+      "International Expansion",
+      "Financial Results"
+    ]
+  },
+  {
+    "publisher": "Isar Aerospace",
+    "website": "https://isaraerospace.com",
+    "categories": [
+      "Orbital Launch",
+      "Payload Deployment"
+    ]
+  },
+  {
+    "publisher": "Kpler",
+    "website": "https://kpler.com",
+    "categories": [
+      "Maritime Surveillance",
+      "Dark Vessel Detection",
+      "Earth Observation"
+    ]
+  },
+  {
+    "publisher": "Kuwait Times",
+    "website": "https://kuwaittimes.com",
+    "categories": [
+      "Defense Cooperation"
+    ]
+  },
+  {
+    "publisher": "La Tribune",
+    "website": "https://latribune.fr",
+    "categories": [
+      "Commercial Space",
+      "Signals Intelligence"
+    ]
+  },
+  {
+    "publisher": "Leonardo",
+    "website": "https://leonardo.com",
+    "categories": [
+      "Earth Observation",
+      "Sovereign Space Capabilities"
+    ]
+  },
+  {
+    "publisher": "Les Échos",
+    "website": "https://lesechos.fr",
+    "categories": [
+      "Space Industry Funding",
+      "Satellite Constellations",
+      "Onboard AI"
+    ]
+  },
+  {
+    "publisher": "L’Essentiel de l’Éco",
+    "website": "https://lessentieldeleco.fr",
+    "categories": [
+      "Military Space",
+      "Defense Procurement"
+    ]
+  },
+  {
+    "publisher": "Loft Orbital",
+    "website": "https://loftorbital.com",
+    "categories": [
+      "Earth Observation",
+      "Government Contracts"
+    ]
+  },
+  {
+    "publisher": "MDA Space",
+    "website": "https://mda.space",
+    "categories": [
+      "Maritime Surveillance",
+      "Government Contracts",
+      "Mergers & Acquisitions",
+      "Geospatial Analytics"
+    ]
+  },
+  {
+    "publisher": "MSN",
+    "website": "https://msn.com",
+    "categories": [
+      "Satellite Manufacturing",
+      "Space Industry Partnerships"
+    ]
+  },
+  {
+    "publisher": "North American Clean Energy",
+    "website": "https://nacleanenergy.com",
+    "categories": [
+      "Maritime Surveillance",
+      "RF Geolocation",
+      "Sensor Fusion"
+    ]
+  },
+  {
+    "publisher": "Naval News",
+    "website": "https://navalnews.com",
+    "categories": [
+      "Maritime Surveillance",
+      "Uncrewed Surface Vessels"
+    ]
+  },
+  {
+    "publisher": "NEWS.am",
+    "website": "https://news.am",
+    "categories": [
+      "Cybersecurity Incidents",
+      "Drone Industry"
+    ]
+  },
+  {
+    "publisher": "NewsnReleases",
+    "website": "https://newsnreleases.com",
+    "categories": [
+      "Mergers & Acquisitions"
+    ]
+  },
+  {
+    "publisher": "Next Gazeta.pl",
+    "website": "https://next.gazeta.pl",
+    "categories": [
+      "European Space Policy",
+      "Space Infrastructure"
+    ]
+  },
+  {
+    "publisher": "Nordic Defence Sector",
+    "website": "https://nordicdefencesector.com",
+    "categories": [
+      "Military Space",
+      "Space Operations"
+    ]
+  },
+  {
+    "publisher": "OpexNews",
+    "website": "https://opexnews.fr",
+    "categories": [
+      "Signals Intelligence",
+      "Military Space",
+      "Defense Procurement"
+    ]
+  },
+  {
+    "publisher": "Outer Space Today",
+    "website": "https://outerspacetoday.com",
+    "categories": [
+      "Space Industry Funding",
+      "Radar Imaging",
+      "Satellite Sensor Technology"
+    ]
+  },
+  {
+    "publisher": "PanDaily",
+    "website": "https://pandaily.com",
+    "categories": [
+      "Signals Intelligence",
+      "Satellite Constellations"
+    ]
+  },
+  {
+    "publisher": "Payload",
+    "website": "https://payloadspace.com",
+    "categories": [
+      "Space Industry Funding",
+      "Satellite Navigation",
+      "Satellite Communications",
+      "International Expansion"
+    ]
+  },
+  {
+    "publisher": "Prime Minister of Canada",
+    "website": "https://pm.gc.ca",
+    "categories": [
+      "Trade Agreements"
+    ]
+  },
+  {
+    "publisher": "Philippine News Agency",
+    "website": "https://pna.gov.ph",
+    "categories": [
+      "Dark Vessel Detection",
+      "Illegal Fishing",
+      "International Maritime Cooperation"
+    ]
+  },
+  {
+    "publisher": "Politico Europe",
+    "website": "https://politico.eu",
+    "categories": [
+      "Nuclear Exercises",
+      "Russia–Ukraine War"
+    ]
+  },
+  {
+    "publisher": "PR Newswire",
+    "website": "https://prnewswire.com",
+    "categories": [
+      "Satellite Launches",
+      "Signals Intelligence",
+      "Passive RF Sensing",
+      "Defense Procurement"
+    ]
+  },
+  {
+    "publisher": "Project Geospatial",
+    "website": "https://projectgeospatial.org",
+    "categories": [
+      "Commercial Earth Observation",
+      "Intelligence Policy"
+    ]
+  },
+  {
+    "publisher": "Reuters",
+    "website": "https://reuters.com",
+    "categories": [
+      "Military Space",
+      "Counterspace Activity",
+      "Electronic Warfare",
+      "European Defense"
+    ]
+  },
+  {
+    "publisher": "Rheinmetall",
+    "website": "https://rheinmetall.com",
+    "categories": [
+      "Radar Imaging",
+      "Military Space",
+      "Defense Industry Joint Ventures"
+    ]
+  },
+  {
+    "publisher": "Rocket Lab",
+    "website": "https://rocketlabcorp.com",
+    "categories": [
+      "Sovereign Space Capabilities",
+      "International Expansion"
+    ]
+  },
+  {
+    "publisher": "Saildrone",
+    "website": "https://saildrone.com",
+    "categories": [
+      "Maritime Surveillance",
+      "Uncrewed Surface Vessels"
+    ]
+  },
+  {
+    "publisher": "Via Satellite",
+    "website": "https://satellitetoday.com",
+    "categories": [
+      "Satellite Launches",
+      "Sovereign Space Capabilities",
+      "Earth Observation",
+      "Disaster Monitoring",
+      "Government Contracts"
+    ]
+  },
+  {
+    "publisher": "SatNow",
+    "website": "https://satnow.com",
+    "categories": [
+      "Space Domain Awareness",
+      "Satellite Manufacturing",
+      "Government Contracts"
+    ]
+  },
+  {
+    "publisher": "South China Morning Post",
+    "website": "https://scmp.com",
+    "categories": [
+      "Signals Intelligence",
+      "Satellite Launches"
+    ]
+  },
+  {
+    "publisher": "EIN News",
+    "website": "https://semiconductors.einnews.com",
+    "categories": [
+      "Maritime Surveillance",
+      "AI & Data Analytics",
+      "Government Contracts"
+    ]
+  },
+  {
+    "publisher": "SkAI Data Services",
+    "website": "https://skai-data-services.com",
+    "categories": [
+      "GNSS Interference",
+      "Aviation Analytics"
+    ]
+  },
+  {
+    "publisher": "Sierra Nevada Corporation",
+    "website": "https://sncorp.com",
+    "categories": [
+      "Signals Intelligence",
+      "Satellite Constellations"
+    ]
+  },
+  {
+    "publisher": "SpaceNews",
+    "website": "https://spacenews.com",
+    "categories": [
+      "Space Industry Funding",
+      "Radar Imaging",
+      "Disaster Monitoring",
+      "International Expansion",
+      "Sovereign Space Capabilities",
+      "Geospatial Intelligence",
+      "Intelligence Leadership"
+    ]
+  },
+  {
+    "publisher": "SpaceTech Gulf",
+    "website": "https://spacetech-gulf.com",
+    "categories": [
+      "Space Industry Business Development",
+      "Defense Industry"
+    ]
+  },
+  {
+    "publisher": "SpaceWatch.Global",
+    "website": "https://spacewatch.global",
+    "categories": [
+      "Electronic Warfare",
+      "Intelligence & Reconnaissance",
+      "Collective Defense"
+    ]
+  },
+  {
+    "publisher": "Spire",
+    "website": "https://spire.com",
+    "categories": [
+      "GNSS Interference",
+      "RF Geolocation",
+      "Space-Based Early Warning",
+      "Intelligence & Reconnaissance",
+      "Defense Industry Partnerships"
+    ]
+  },
+  {
+    "publisher": "U.S. Space Systems Command",
+    "website": "https://ssc.spaceforce.mil",
+    "categories": [
+      "Military Space",
+      "Airborne Target Tracking"
+    ]
+  },
+  {
+    "publisher": "Apple Stocks",
+    "website": "https://stocks.apple.com",
+    "categories": [
+      "Defense Procurement",
+      "Earth Observation",
+      "Satellite Data Services"
+    ]
+  },
+  {
+    "publisher": "Stock Titan",
+    "website": "https://stocktitan.net",
+    "categories": [
+      "Satellite Launches",
+      "Satellite Manufacturing"
+    ]
+  },
+  {
+    "publisher": "StreetInsider",
+    "website": "https://streetinsider.com",
+    "categories": [
+      "RF Geolocation"
+    ]
+  },
+  {
+    "publisher": "SynMax",
+    "website": "https://synmax.com",
+    "categories": [
+      "Maritime Surveillance",
+      "Maritime Analytics"
+    ]
+  },
+  {
+    "publisher": "TechCrunch",
+    "website": "https://techcrunch.com",
+    "categories": [
+      "Startup Funding",
+      "Maritime Technology"
+    ]
+  },
+  {
+    "publisher": "Tech Times",
+    "website": "https://techtimes.com",
+    "categories": [
+      "Public Funding",
+      "Signals Intelligence",
+      "Satellite Technology"
+    ]
+  },
+  {
+    "publisher": "TFX Capital",
+    "website": "https://tfxcap.com",
+    "categories": [
+      "Space Domain Awareness",
+      "Electronic Threat Detection"
+    ]
+  },
+  {
+    "publisher": "The Guardian",
+    "website": "https://theguardian.com",
+    "categories": [
+      "Satellite Communications",
+      "Russia–Ukraine War"
+    ]
+  },
+  {
+    "publisher": "The Next Web",
+    "website": "https://thenextweb.com",
+    "categories": [
+      "Military AI",
+      "Defense Software",
+      "Technology Sovereignty"
+    ]
+  },
+  {
+    "publisher": "Trophées des Futures Licornes",
+    "website": "https://tropheesdesfutureslicornes.fr",
+    "categories": [
+      "Satellite Manufacturing",
+      "Signals Intelligence"
+    ]
+  },
+  {
+    "publisher": "UA.News",
+    "website": "https://ua.news",
+    "categories": [
+      "Signals Intelligence",
+      "Satellite Launches"
+    ]
+  },
+  {
+    "publisher": "UAE Weeklys",
+    "website": "https://uaeweeklys.com",
+    "categories": [
+      "Satellite Launches",
+      "International Space Cooperation"
+    ]
+  },
+  {
+    "publisher": "Unseenlabs",
+    "website": "https://unseenlabs.com",
+    "categories": [
+      "Space Industry Careers",
+      "Product Leadership"
+    ]
+  },
+  {
+    "publisher": "Vantor",
+    "website": "https://vantor.com",
+    "categories": [
+      "Maritime Surveillance",
+      "Defense Procurement"
+    ]
+  },
+  {
+    "publisher": "Vimeo",
+    "website": "https://vimeo.com",
+    "categories": [
+      "RF Direction Finding",
+      "Tactical Reconnaissance"
+    ]
+  },
+  {
+    "publisher": "Windward",
+    "website": "https://windward.ai",
+    "categories": [
+      "Maritime Intelligence"
+    ]
+  },
+  {
+    "publisher": "WQOW Market Minute",
+    "website": "https://wqow.marketminute.com",
+    "categories": [
+      "Counter-Drone Systems",
+      "RF Sensing"
+    ]
+  },
+  {
+    "publisher": "Xona Space Systems",
+    "website": "https://xonaspace.com",
+    "categories": [
+      "Space Industry Funding",
+      "Satellite Navigation"
+    ]
+  },
+  {
+    "publisher": "YouTube",
+    "website": "https://youtube.com",
+    "categories": [
+      "Electronic Warfare",
+      "Signals Intelligence",
+      "Maritime Surveillance",
+      "Radar Imaging",
+      "Defense Cooperation"
+    ]
+  }
+]

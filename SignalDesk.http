@@ -1,0 +1,19 @@
+@base = http://localhost:5188
+
+### Frontend catalog (offline sample by default)
+GET {{base}}/v1/catalog
+
+### OpenAPI contract
+GET {{base}}/openapi/v1.json
+
+### Sanitized service list
+GET {{base}}/v1/ai/services
+
+### Source coverage (live mode seeds the 98-source registry)
+GET {{base}}/v1/sources
+
+### Pending human review
+GET {{base}}/v1/review/items
+
+### Provider execution metadata
+GET {{base}}/v1/ai/executions

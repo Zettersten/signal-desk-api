@@ -1,0 +1,16 @@
+**/bin/
+**/obj/
+.vs/
+.idea/
+TestResults/
+artifacts/
+data/runtime/
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+*.db.lock
+.env
+appsettings.Local.json
+*.user
+.DS_Store

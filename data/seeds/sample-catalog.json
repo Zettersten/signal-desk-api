@@ -1,0 +1,1382 @@
+{
+  "records": [
+    {
+      "id": "s1",
+      "company": "Unseenlabs",
+      "publisher": "SpaceNews",
+      "title": "Unseenlabs expands next-generation RF constellation",
+      "summary": "A planned multi-satellite deployment points to improved revisit rates and a broader commercial maritime monitoring offering.",
+      "category": "RF Analytics",
+      "importance": 96,
+      "time": "08:42",
+      "mark": "U",
+      "tone": "mint",
+      "competitorId": "unseenlabs",
+      "publisherId": "spacenews",
+      "sample": true,
+      "publishedAt": "2026-11-24T08:42:00Z",
+      "paragraphs": [
+        {
+          "id": "summary",
+          "text": "A planned multi-satellite deployment points to improved revisit rates and a broader commercial maritime monitoring offering."
+        },
+        {
+          "id": "context",
+          "text": "For analysts following rf analytics, this example illustrates how a market change could affect the commercial position of Unseenlabs. Compare the offer, route to market and available evidence before treating an announcement as a change in delivered capability."
+        },
+        {
+          "id": "follow-up",
+          "text": "A useful next step is to verify the original announcement or filing, then note what changed, who benefits, and what remains unknown. The publisher attribution shown here is illustrative; no source article is implied."
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "company": "Kleos Space",
+      "publisher": "Via Satellite",
+      "title": "Kleos Space assets draw renewed acquisition interest",
+      "summary": "Emerging buyer interest in the RF geolocation portfolio could reshape the competitive landscape for regional providers.",
+      "category": "RF Analytics",
+      "importance": 89,
+      "time": "08:15",
+      "mark": "K",
+      "tone": "plum",
+      "competitorId": "kleos",
+      "publisherId": "via-satellite",
+      "sample": true,
+      "publishedAt": "2026-11-24T08:15:00Z",
+      "paragraphs": [
+        {
+          "id": "summary",
+          "text": "Emerging buyer interest in the RF geolocation portfolio could reshape the competitive landscape for regional providers."
+        },
+        {
+          "id": "context",
+          "text": "For analysts following rf analytics, this example illustrates how a market change could affect the commercial position of Kleos Space. Compare the offer, route to market and available evidence before treating an announcement as a change in delivered capability."
+        },
+        {
+          "id": "follow-up",
+          "text": "A useful next step is to verify the original announcement or filing, then note what changed, who benefits, and what remains unknown. The publisher attribution shown here is illustrative; no source article is implied."
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "company": "Spire Global",
+      "publisher": "Space Intel Report",
+      "title": "Spire Global advances its maritime data partnerships",
+      "summary": "A new distribution model brings satellite-derived maritime data closer to enterprise analytics workflows.",
+      "category": "Earth Observation",
+      "importance": 84,
+      "time": "07:58",
+      "mark": "S",
+      "tone": "blue",
+      "competitorId": "spire",
+      "publisherId": "space-intel-report",
+      "sample": true,
+      "publishedAt": "2026-11-24T07:58:00Z",
+      "paragraphs": [
+        {
+          "id": "summary",
+          "text": "A new distribution model brings satellite-derived maritime data closer to enterprise analytics workflows."
+        },
+        {
+          "id": "context",
+          "text": "For analysts following earth observation, this example illustrates how a market change could affect the commercial position of Spire Global. Compare the offer, route to market and available evidence before treating an announcement as a change in delivered capability."
+        },
+        {
+          "id": "follow-up",
+          "text": "A useful next step is to verify the original announcement or filing, then note what changed, who benefits, and what remains unknown. The publisher attribution shown here is illustrative; no source article is implied."
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "company": "BAE Systems",
+      "publisher": "UK Space Agency",
+      "title": "UK opens consultation on commercial space data procurement",
+      "summary": "The consultation explores how public agencies can evaluate and procure commercial Earth observation and analytics services.",
+      "category": "Market & Policy",
+      "importance": 81,
+      "time": "07:34",
+      "mark": "BAE",
+      "tone": "gold",
+      "competitorId": "bae",
+      "publisherId": "uk-space-agency",
+      "sample": true,
+      "publishedAt": "2026-11-24T07:34:00Z",
+      "paragraphs": [
+        {
+          "id": "summary",
+          "text": "The consultation explores how public agencies can evaluate and procure commercial Earth observation and analytics services."
+        },
+        {
+          "id": "context",
+          "text": "For analysts following market & policy, this example illustrates how a market change could affect the commercial position of BAE Systems. Compare the offer, route to market and available evidence before treating an announcement as a change in delivered capability."
+        },
+        {
+          "id": "follow-up",
+          "text": "A useful next step is to verify the original announcement or filing, then note what changed, who benefits, and what remains unknown. The publisher attribution shown here is illustrative; no source article is implied."
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "company": "ICEYE",
+      "publisher": "Satellite Today",
+      "title": "ICEYE broadens access to on-demand SAR monitoring",
+      "summary": "An updated commercial offering emphasizes faster tasking and easier integration for enterprise customers.",
+      "category": "Earth Observation",
+      "importance": 77,
+      "time": "07:12",
+      "mark": "I",
+      "tone": "sky",
+      "competitorId": "iceye",
+      "publisherId": "satellite-today",
+      "sample": true,
+      "publishedAt": "2026-11-24T07:12:00Z",
+      "paragraphs": [
+        {
+          "id": "summary",
+          "text": "An updated commercial offering emphasizes faster tasking and easier integration for enterprise customers."
+        },
+        {
+          "id": "context",
+          "text": "For analysts following earth observation, this example illustrates how a market change could affect the commercial position of ICEYE. Compare the offer, route to market and available evidence before treating an announcement as a change in delivered capability."
+        },
+        {
+          "id": "follow-up",
+          "text": "A useful next step is to verify the original announcement or filing, then note what changed, who benefits, and what remains unknown. The publisher attribution shown here is illustrative; no source article is implied."
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "company": "Aurora Insight",
+      "publisher": "Geo Week News",
+      "title": "Spectrum analytics providers test new commercial delivery models",
+      "summary": "Subscription-based pricing and standardized outputs feature in a new round of customer discovery.",
+      "category": "Spectrum & GNSS",
+      "importance": 76,
+      "time": "06:48",
+      "mark": "A",
+      "tone": "plum",
+      "competitorId": "aurora",
+      "publisherId": "geo-week-news",
+      "sample": true,
+      "publishedAt": "2026-11-24T06:48:00Z",
+      "paragraphs": [
+        {
+          "id": "summary",
+          "text": "Subscription-based pricing and standardized outputs feature in a new round of customer discovery."
+        },
+        {
+          "id": "context",
+          "text": "For analysts following spectrum & gnss, this example illustrates how a market change could affect the commercial position of Aurora Insight. Compare the offer, route to market and available evidence before treating an announcement as a change in delivered capability."
+        },
+        {
+          "id": "follow-up",
+          "text": "A useful next step is to verify the original announcement or filing, then note what changed, who benefits, and what remains unknown. The publisher attribution shown here is illustrative; no source article is implied."
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "company": "Planet Labs",
+      "publisher": "SpaceNews",
+      "title": "Planet explores sector-specific monitoring bundles",
+      "summary": "New product packaging pairs recurring imagery with analytics for infrastructure and sustainability teams.",
+      "category": "Earth Observation",
+      "importance": 71,
+      "time": "06:31",
+      "mark": "P",
+      "tone": "mint",
+      "competitorId": "planet",
+      "publisherId": "spacenews",
+      "sample": true,
+      "publishedAt": "2026-11-24T06:31:00Z",
+      "paragraphs": [
+        {
+          "id": "summary",
+          "text": "New product packaging pairs recurring imagery with analytics for infrastructure and sustainability teams."
+        },
+        {
+          "id": "context",
+          "text": "For analysts following earth observation, this example illustrates how a market change could affect the commercial position of Planet Labs. Compare the offer, route to market and available evidence before treating an announcement as a change in delivered capability."
+        },
+        {
+          "id": "follow-up",
+          "text": "A useful next step is to verify the original announcement or filing, then note what changed, who benefits, and what remains unknown. The publisher attribution shown here is illustrative; no source article is implied."
+        }
+      ]
+    },
+    {
+      "id": "s8",
+      "company": "Umbra",
+      "publisher": "Via Satellite",
+      "title": "Umbra evaluates new imagery distribution partnerships",
+      "summary": "Partner-led distribution could make space-derived analytics available to a wider set of customers.",
+      "category": "Earth Observation",
+      "importance": 69,
+      "time": "06:19",
+      "mark": "U",
+      "tone": "sky",
+      "competitorId": "umbra",
+      "publisherId": "via-satellite",
+      "sample": true,
+      "publishedAt": "2026-11-24T06:19:00Z",
+      "paragraphs": [
+        {
+          "id": "summary",
+          "text": "Partner-led distribution could make space-derived analytics available to a wider set of customers."
+        },
+        {
+          "id": "context",
+          "text": "For analysts following earth observation, this example illustrates how a market change could affect the commercial position of Umbra. Compare the offer, route to market and available evidence before treating an announcement as a change in delivered capability."
+        },
+        {
+          "id": "follow-up",
+          "text": "A useful next step is to verify the original announcement or filing, then note what changed, who benefits, and what remains unknown. The publisher attribution shown here is illustrative; no source article is implied."
+        }
+      ]
+    },
+    {
+      "id": "s9",
+      "company": "Airbus",
+      "publisher": "ESA",
+      "title": "European industry group proposes interoperable space data standards",
+      "summary": "The proposal outlines common metadata and licensing conventions for commercial data providers.",
+      "category": "Space Domain Awareness",
+      "importance": 63,
+      "time": "06:02",
+      "mark": "A",
+      "tone": "gold",
+      "competitorId": "airbus",
+      "publisherId": "esa",
+      "sample": true,
+      "publishedAt": "2026-11-24T06:02:00Z",
+      "paragraphs": [
+        {
+          "id": "summary",
+          "text": "The proposal outlines common metadata and licensing conventions for commercial data providers."
+        },
+        {
+          "id": "context",
+          "text": "For analysts following space domain awareness, this example illustrates how a market change could affect the commercial position of Airbus. Compare the offer, route to market and available evidence before treating an announcement as a change in delivered capability."
+        },
+        {
+          "id": "follow-up",
+          "text": "A useful next step is to verify the original announcement or filing, then note what changed, who benefits, and what remains unknown. The publisher attribution shown here is illustrative; no source article is implied."
+        }
+      ]
+    },
+    {
+      "id": "s10",
+      "company": "Rocket Lab",
+      "publisher": "SpaceNews",
+      "title": "Smallsat launch availability remains a procurement consideration",
+      "summary": "Satellite operators continue to weigh dedicated and shared launch options against constellation replenishment timelines.",
+      "category": "Space Infrastructure",
+      "importance": 61,
+      "time": "05:55",
+      "mark": "R",
+      "tone": "plum",
+      "competitorId": "rocket-lab",
+      "publisherId": "spacenews",
+      "sample": true,
+      "publishedAt": "2026-11-24T05:55:00Z",
+      "paragraphs": [
+        {
+          "id": "summary",
+          "text": "Satellite operators continue to weigh dedicated and shared launch options against constellation replenishment timelines."
+        },
+        {
+          "id": "context",
+          "text": "For analysts following space infrastructure, this example illustrates how a market change could affect the commercial position of Rocket Lab. Compare the offer, route to market and available evidence before treating an announcement as a change in delivered capability."
+        },
+        {
+          "id": "follow-up",
+          "text": "A useful next step is to verify the original announcement or filing, then note what changed, who benefits, and what remains unknown. The publisher attribution shown here is illustrative; no source article is implied."
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "company": "BlackSky",
+      "publisher": "Geo Week News",
+      "title": "BlackSky explores lower-friction analytics onboarding",
+      "summary": "Product teams are evaluating new methods for customer trials and enterprise integration.",
+      "category": "Earth Observation",
+      "importance": 59,
+      "time": "05:30",
+      "mark": "B",
+      "tone": "blue",
+      "competitorId": "blacksky",
+      "publisherId": "geo-week-news",
+      "sample": true,
+      "publishedAt": "2026-11-24T05:30:00Z",
+      "paragraphs": [
+        {
+          "id": "summary",
+          "text": "Product teams are evaluating new methods for customer trials and enterprise integration."
+        },
+        {
+          "id": "context",
+          "text": "For analysts following earth observation, this example illustrates how a market change could affect the commercial position of BlackSky. Compare the offer, route to market and available evidence before treating an announcement as a change in delivered capability."
+        },
+        {
+          "id": "follow-up",
+          "text": "A useful next step is to verify the original announcement or filing, then note what changed, who benefits, and what remains unknown. The publisher attribution shown here is illustrative; no source article is implied."
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "company": "GHGSat",
+      "publisher": "Satellite Today",
+      "title": "GHGSat highlights demand for independent emissions data",
+      "summary": "Industry buyers continue to evaluate satellite-derived measurements alongside existing reporting workflows.",
+      "category": "Earth Observation",
+      "importance": 55,
+      "time": "05:25",
+      "mark": "G",
+      "tone": "mint",
+      "competitorId": "ghgsat",
+      "publisherId": "satellite-today",
+      "sample": true,
+      "publishedAt": "2026-11-24T05:25:00Z",
+      "paragraphs": [
+        {
+          "id": "summary",
+          "text": "Industry buyers continue to evaluate satellite-derived measurements alongside existing reporting workflows."
+        },
+        {
+          "id": "context",
+          "text": "For analysts following earth observation, this example illustrates how a market change could affect the commercial position of GHGSat. Compare the offer, route to market and available evidence before treating an announcement as a change in delivered capability."
+        },
+        {
+          "id": "follow-up",
+          "text": "A useful next step is to verify the original announcement or filing, then note what changed, who benefits, and what remains unknown. The publisher attribution shown here is illustrative; no source article is implied."
+        }
+      ]
+    },
+    {
+      "id": "s13",
+      "company": "Unseenlabs",
+      "publisher": "Via Satellite",
+      "title": "RF data buyers compare maritime licensing options",
+      "summary": "A sample procurement note compares subscription and project-based licensing for commercial maritime data.",
+      "category": "Maritime Analytics",
+      "importance": 66,
+      "time": "05:10",
+      "mark": "U",
+      "tone": "mint",
+      "competitorId": "unseenlabs",
+      "publisherId": "via-satellite",
+      "sample": true,
+      "publishedAt": "2026-11-24T05:10:00Z",
+      "paragraphs": [
+        {
+          "id": "summary",
+          "text": "A sample procurement note compares subscription and project-based licensing for commercial maritime data."
+        },
+        {
+          "id": "context",
+          "text": "For analysts following maritime analytics, this example illustrates how a market change could affect the commercial position of Unseenlabs. Compare the offer, route to market and available evidence before treating an announcement as a change in delivered capability."
+        },
+        {
+          "id": "follow-up",
+          "text": "A useful next step is to verify the original announcement or filing, then note what changed, who benefits, and what remains unknown. The publisher attribution shown here is illustrative; no source article is implied."
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "company": "Unseenlabs",
+      "publisher": "SpaceNews",
+      "title": "Geospatial teams evaluate RF and imagery together",
+      "summary": "A sample customer discovery note tracks interest in pairing maritime RF observations with commercially available imagery.",
+      "category": "Maritime Analytics",
+      "importance": 72,
+      "time": "04:52",
+      "mark": "U",
+      "tone": "mint",
+      "competitorId": "unseenlabs",
+      "publisherId": "spacenews",
+      "sample": true,
+      "publishedAt": "2026-11-24T04:52:00Z",
+      "paragraphs": [
+        {
+          "id": "summary",
+          "text": "A sample customer discovery note tracks interest in pairing maritime RF observations with commercially available imagery."
+        },
+        {
+          "id": "context",
+          "text": "For analysts following maritime analytics, this example illustrates how a market change could affect the commercial position of Unseenlabs. Compare the offer, route to market and available evidence before treating an announcement as a change in delivered capability."
+        },
+        {
+          "id": "follow-up",
+          "text": "A useful next step is to verify the original announcement or filing, then note what changed, who benefits, and what remains unknown. The publisher attribution shown here is illustrative; no source article is implied."
+        }
+      ]
+    }
+  ],
+  "competitors": [
+    {
+      "id": "unseenlabs",
+      "name": "Unseenlabs",
+      "mark": "U",
+      "tone": "mint",
+      "website": "https://unseenlabs.space/",
+      "overview": "French commercial space company focused on satellite-based radio-frequency data for maritime awareness. Relevant where customers compare RF-only monitoring with multi-source geospatial products.",
+      "capabilities": [
+        {
+          "name": "Space-based RF geolocation",
+          "category": "RF Analytics",
+          "description": "Commercial RF observations and geolocation data.",
+          "status": "Core offering"
+        },
+        {
+          "name": "Maritime activity monitoring",
+          "category": "Maritime Analytics",
+          "description": "Maritime analytics using RF observations.",
+          "status": "Core offering"
+        },
+        {
+          "name": "Multi-source geospatial integration",
+          "category": "Earth Observation",
+          "description": "Track customer demand for RF paired with complementary datasets.",
+          "status": "Watch"
+        }
+      ],
+      "logo": "",
+      "logoKind": "sample",
+      "foundedYear": "2015",
+      "incorporated": {
+        "date": "2015-03-16",
+        "sample": true,
+        "detail": "Fictional example. The legal incorporation date has not been verified."
+      },
+      "image": {
+        "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20230%22%3E%3Crect%20width%3D%22640%22%20height%3D%22230%22%20fill%3D%22%23123336%22%2F%3E%3Cg%20stroke%3D%22%237ad5ba%22%20opacity%3D%22.19%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%2090h640M0%20130h640M0%20170h640M0%20210h640M40%2076v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134%22%2F%3E%3Cellipse%20cx%3D%2290%22%20cy%3D%22140%22%20rx%3D%2268%22%20ry%3D%2242%22%2F%3E%3Cellipse%20cx%3D%2290%22%20cy%3D%22140%22%20rx%3D%2296%22%20ry%3D%2261%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%237ad5ba%22%20font-family%3D%22system-ui%2Csans-serif%22%3E%3Ctext%20x%3D%2229%22%20y%3D%2234%22%20font-size%3D%2220%22%20font-weight%3D%22600%22%3EUnseenlabs%3C%2Ftext%3E%3Ctext%20x%3D%2229%22%20y%3D%2256%22%20font-size%3D%2212%22%3EMaritime%20RF%20observations%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M0%20150Q50%2090%20105%20150T210%20150T315%20150T420%20150T525%20150T630%20150%22%20fill%3D%22none%22%20stroke%3D%22%237ad5ba%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2290%22%20cy%3D%22176%22%20r%3D%225%22%20fill%3D%22%237ad5ba%22%2F%3E%3C%2Fsvg%3E",
+        "alt": "Sample diagram of maritime rf observations for Unseenlabs",
+        "caption": "Sample illustration: Maritime RF observations. Not a company photograph or measured data."
+      },
+      "financials": [
+        {
+          "label": "Market value",
+          "period": "Example snapshot",
+          "detail": "Illustrative valuation; not a market quote.",
+          "value": "USD 330M"
+        },
+        {
+          "label": "Earnings",
+          "period": "Example quarter",
+          "detail": "Illustrative net income or loss.",
+          "value": "−USD 9M"
+        },
+        {
+          "label": "Revenue",
+          "period": "Example quarter",
+          "detail": "Illustrative operating revenue.",
+          "value": "USD 28M"
+        },
+        {
+          "label": "Funding",
+          "period": "Example financing history",
+          "detail": "Illustrative cumulative financing.",
+          "value": "USD 72M"
+        }
+      ],
+      "activity": [
+        {
+          "date": "2026-11-23",
+          "title": "Profile created",
+          "details": "Illustrative market scope and capabilities were added to the sample catalog."
+        },
+        {
+          "date": "2026-11-24",
+          "title": "Sample evidence added",
+          "details": "Unseenlabs expands next-generation RF constellation",
+          "recordId": "s1"
+        },
+        {
+          "date": "2026-11-24",
+          "title": "Sample evidence added",
+          "details": "RF data buyers compare maritime licensing options",
+          "recordId": "s13"
+        },
+        {
+          "date": "2026-11-24",
+          "title": "Sample evidence added",
+          "details": "Geospatial teams evaluate RF and imagery together",
+          "recordId": "s14"
+        }
+      ]
+    },
+    {
+      "id": "kleos",
+      "name": "Kleos Space",
+      "mark": "K",
+      "tone": "plum",
+      "website": "https://www.kleos.space/",
+      "overview": "Historical RF geolocation business included for tracking changes to its commercial portfolio. Current operating status is not established by this sample.",
+      "capabilities": [
+        {
+          "name": "RF geolocation portfolio",
+          "category": "RF Analytics",
+          "description": "Historical RF data and analytics portfolio.",
+          "status": "Watch"
+        }
+      ],
+      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%2330233b%22%2F%3E%3Cpath%20d%3D%22M11%2039%2032%2014l21%2025M19%2045l13-15%2013%2015%22%20fill%3D%22none%22%20stroke%3D%22%23d8a7e6%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "logoKind": "sample",
+      "foundedYear": "2017",
+      "incorporated": {
+        "date": "2017-04-11",
+        "sample": true,
+        "detail": "Fictional example. The legal incorporation date has not been verified."
+      },
+      "image": {
+        "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20230%22%3E%3Crect%20width%3D%22640%22%20height%3D%22230%22%20fill%3D%22%2330233b%22%2F%3E%3Cg%20stroke%3D%22%23d8a7e6%22%20opacity%3D%22.19%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%2090h640M0%20130h640M0%20170h640M0%20210h640M40%2076v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134%22%2F%3E%3Cellipse%20cx%3D%22131%22%20cy%3D%22140%22%20rx%3D%2268%22%20ry%3D%2242%22%2F%3E%3Cellipse%20cx%3D%22131%22%20cy%3D%22140%22%20rx%3D%2296%22%20ry%3D%2261%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%23d8a7e6%22%20font-family%3D%22system-ui%2Csans-serif%22%3E%3Ctext%20x%3D%2229%22%20y%3D%2234%22%20font-size%3D%2220%22%20font-weight%3D%22600%22%3EKleos%20Space%3C%2Ftext%3E%3Ctext%20x%3D%2229%22%20y%3D%2256%22%20font-size%3D%2212%22%3EHistorical%20RF%20portfolio%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M25%20172H112V142H192V170H273V109H353V151H433V95H514V172H615%22%20fill%3D%22none%22%20stroke%3D%22%23d8a7e6%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22131%22%20cy%3D%22176%22%20r%3D%225%22%20fill%3D%22%23d8a7e6%22%2F%3E%3C%2Fsvg%3E",
+        "alt": "Sample diagram of historical rf portfolio for Kleos Space",
+        "caption": "Sample illustration: Historical RF portfolio. Not a company photograph or measured data."
+      },
+      "financials": [
+        {
+          "label": "Market value",
+          "period": "Example snapshot",
+          "detail": "Illustrative valuation; not a market quote.",
+          "value": "USD 65M"
+        },
+        {
+          "label": "Earnings",
+          "period": "Example quarter",
+          "detail": "Illustrative net income or loss.",
+          "value": "−USD 6M"
+        },
+        {
+          "label": "Revenue",
+          "period": "Example quarter",
+          "detail": "Illustrative operating revenue.",
+          "value": "USD 8M"
+        },
+        {
+          "label": "Funding",
+          "period": "Example financing history",
+          "detail": "Illustrative cumulative financing.",
+          "value": "USD 19M"
+        }
+      ],
+      "activity": [
+        {
+          "date": "2026-11-23",
+          "title": "Profile created",
+          "details": "Illustrative market scope and capabilities were added to the sample catalog."
+        },
+        {
+          "date": "2026-11-24",
+          "title": "Sample evidence added",
+          "details": "Kleos Space assets draw renewed acquisition interest",
+          "recordId": "s2"
+        }
+      ]
+    },
+    {
+      "id": "spire",
+      "name": "Spire Global",
+      "mark": "S",
+      "tone": "blue",
+      "website": "https://spire.com/",
+      "overview": "Satellite-data and space-services business included as an adjacent competitor. Product and business ownership can change; verify the current offering before using this profile.",
+      "capabilities": [
+        {
+          "name": "Space services",
+          "category": "Space Infrastructure",
+          "description": "Payload hosting and commercial satellite services.",
+          "status": "Core offering"
+        },
+        {
+          "name": "Satellite-derived data",
+          "category": "Earth Observation",
+          "description": "Commercial delivery and integration of space-derived datasets.",
+          "status": "Adjacent offering"
+        }
+      ],
+      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23182e51%22%2F%3E%3Cpath%20d%3D%22M12%2038c9-23%2031-23%2040%200M17%2043c8-12%2022-12%2030%200M27%2047h10%22%20fill%3D%22none%22%20stroke%3D%22%2391baff%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "logoKind": "sample",
+      "foundedYear": "2012",
+      "incorporated": {
+        "date": "2020-05-14",
+        "sample": true,
+        "detail": "Fictional example. The legal incorporation date has not been verified."
+      },
+      "image": {
+        "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20230%22%3E%3Crect%20width%3D%22640%22%20height%3D%22230%22%20fill%3D%22%23182e51%22%2F%3E%3Cg%20stroke%3D%22%2391baff%22%20opacity%3D%22.19%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%2090h640M0%20130h640M0%20170h640M0%20210h640M40%2076v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134%22%2F%3E%3Cellipse%20cx%3D%22172%22%20cy%3D%22140%22%20rx%3D%2268%22%20ry%3D%2242%22%2F%3E%3Cellipse%20cx%3D%22172%22%20cy%3D%22140%22%20rx%3D%2296%22%20ry%3D%2261%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%2391baff%22%20font-family%3D%22system-ui%2Csans-serif%22%3E%3Ctext%20x%3D%2229%22%20y%3D%2234%22%20font-size%3D%2220%22%20font-weight%3D%22600%22%3ESpire%20Global%3C%2Ftext%3E%3Ctext%20x%3D%2229%22%20y%3D%2256%22%20font-size%3D%2212%22%3EHosted%20payload%20services%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M60%20158%20157%20119%20238%20165%20332%20100%20420%20152%20515%2090%20595%20130%22%20fill%3D%22none%22%20stroke%3D%22%2391baff%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22172%22%20cy%3D%22176%22%20r%3D%225%22%20fill%3D%22%2391baff%22%2F%3E%3C%2Fsvg%3E",
+        "alt": "Sample diagram of hosted payload services for Spire Global",
+        "caption": "Sample illustration: Hosted payload services. Not a company photograph or measured data."
+      },
+      "financials": [
+        {
+          "label": "Market value",
+          "period": "Example snapshot",
+          "detail": "Illustrative valuation; not a market quote.",
+          "value": "USD 420M"
+        },
+        {
+          "label": "Earnings",
+          "period": "Example quarter",
+          "detail": "Illustrative net income or loss.",
+          "value": "−USD 12M"
+        },
+        {
+          "label": "Revenue",
+          "period": "Example quarter",
+          "detail": "Illustrative operating revenue.",
+          "value": "USD 30M"
+        },
+        {
+          "label": "Funding",
+          "period": "Example financing history",
+          "detail": "Illustrative cumulative financing.",
+          "value": "USD 44M"
+        }
+      ],
+      "activity": [
+        {
+          "date": "2026-11-23",
+          "title": "Profile created",
+          "details": "Illustrative market scope and capabilities were added to the sample catalog."
+        },
+        {
+          "date": "2026-11-24",
+          "title": "Sample evidence added",
+          "details": "Spire Global advances its maritime data partnerships",
+          "recordId": "s3"
+        }
+      ]
+    },
+    {
+      "id": "bae",
+      "name": "BAE Systems",
+      "mark": "BAE",
+      "tone": "gold",
+      "website": "https://www.baesystems.com/",
+      "overview": "Large aerospace and technology integrator with space systems and geospatial programs. Tracked as an adjacent integrator and channel participant.",
+      "capabilities": [
+        {
+          "name": "Space systems integration",
+          "category": "Space Infrastructure",
+          "description": "Satellite manufacturing, instruments and systems integration.",
+          "status": "Core offering"
+        },
+        {
+          "name": "Geospatial programs",
+          "category": "Earth Observation",
+          "description": "Integration of geospatial products and mission data.",
+          "status": "Adjacent offering"
+        }
+      ],
+      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%233e2e23%22%2F%3E%3Cpath%20d%3D%22M13%2018h38M20%2031h24M13%2044h38M32%2012v38%22%20fill%3D%22none%22%20stroke%3D%22%23eeb775%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "logoKind": "sample",
+      "incorporated": {
+        "date": "1998-08-17",
+        "sample": true,
+        "detail": "Fictional example. The legal incorporation date has not been verified."
+      },
+      "image": {
+        "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20230%22%3E%3Crect%20width%3D%22640%22%20height%3D%22230%22%20fill%3D%22%233e2e23%22%2F%3E%3Cg%20stroke%3D%22%23eeb775%22%20opacity%3D%22.19%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%2090h640M0%20130h640M0%20170h640M0%20210h640M40%2076v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134%22%2F%3E%3Cellipse%20cx%3D%22213%22%20cy%3D%22140%22%20rx%3D%2268%22%20ry%3D%2242%22%2F%3E%3Cellipse%20cx%3D%22213%22%20cy%3D%22140%22%20rx%3D%2296%22%20ry%3D%2261%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%23eeb775%22%20font-family%3D%22system-ui%2Csans-serif%22%3E%3Ctext%20x%3D%2229%22%20y%3D%2234%22%20font-size%3D%2220%22%20font-weight%3D%22600%22%3EBAE%20Systems%3C%2Ftext%3E%3Ctext%20x%3D%2229%22%20y%3D%2256%22%20font-size%3D%2212%22%3ESpace%20systems%20integration%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M50%20153h112l65-50h176l65%2050h102M227%20103v57m176-57v57%22%20fill%3D%22none%22%20stroke%3D%22%23eeb775%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22213%22%20cy%3D%22176%22%20r%3D%225%22%20fill%3D%22%23eeb775%22%2F%3E%3C%2Fsvg%3E",
+        "alt": "Sample diagram of space systems integration for BAE Systems",
+        "caption": "Sample illustration: Space systems integration. Not a company photograph or measured data."
+      },
+      "financials": [
+        {
+          "label": "Market value",
+          "period": "Example snapshot",
+          "detail": "Illustrative valuation; not a market quote.",
+          "value": "USD 2860M"
+        },
+        {
+          "label": "Earnings",
+          "period": "Example quarter",
+          "detail": "Illustrative net income or loss.",
+          "value": "USD 88M"
+        },
+        {
+          "label": "Revenue",
+          "period": "Example quarter",
+          "detail": "Illustrative operating revenue.",
+          "value": "USD 620M"
+        },
+        {
+          "label": "Funding",
+          "period": "Example financing history",
+          "detail": "Illustrative cumulative financing.",
+          "value": "USD 210M"
+        }
+      ],
+      "activity": [
+        {
+          "date": "2026-11-23",
+          "title": "Profile created",
+          "details": "Illustrative market scope and capabilities were added to the sample catalog."
+        },
+        {
+          "date": "2026-11-24",
+          "title": "Sample evidence added",
+          "details": "UK opens consultation on commercial space data procurement",
+          "recordId": "s4"
+        }
+      ]
+    },
+    {
+      "id": "iceye",
+      "name": "ICEYE",
+      "mark": "I",
+      "tone": "sky",
+      "website": "https://www.iceye.com/",
+      "overview": "Commercial synthetic-aperture radar imagery and analytics provider. An adjacent comparison for customers combining imagery and RF evidence.",
+      "capabilities": [
+        {
+          "name": "SAR imagery",
+          "category": "Earth Observation",
+          "description": "Radar imagery and commercial imagery services.",
+          "status": "Core offering"
+        },
+        {
+          "name": "Monitoring analytics",
+          "category": "Maritime Analytics",
+          "description": "Geospatial monitoring workflows and analytics products.",
+          "status": "Adjacent offering"
+        }
+      ],
+      "logo": "",
+      "logoKind": "sample",
+      "foundedYear": "2014",
+      "incorporated": {
+        "date": "2014-10-22",
+        "sample": true,
+        "detail": "Fictional example. The legal incorporation date has not been verified."
+      },
+      "image": {
+        "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20230%22%3E%3Crect%20width%3D%22640%22%20height%3D%22230%22%20fill%3D%22%23183242%22%2F%3E%3Cg%20stroke%3D%22%2383cbe8%22%20opacity%3D%22.19%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%2090h640M0%20130h640M0%20170h640M0%20210h640M40%2076v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134%22%2F%3E%3Cellipse%20cx%3D%22254%22%20cy%3D%22140%22%20rx%3D%2268%22%20ry%3D%2242%22%2F%3E%3Cellipse%20cx%3D%22254%22%20cy%3D%22140%22%20rx%3D%2296%22%20ry%3D%2261%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%2383cbe8%22%20font-family%3D%22system-ui%2Csans-serif%22%3E%3Ctext%20x%3D%2229%22%20y%3D%2234%22%20font-size%3D%2220%22%20font-weight%3D%22600%22%3EICEYE%3C%2Ftext%3E%3Ctext%20x%3D%2229%22%20y%3D%2256%22%20font-size%3D%2212%22%3ERadar%20imagery%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M40%20175%20174%2076l65%2099L365%2077l72%2098%20129-99%22%20fill%3D%22none%22%20stroke%3D%22%2383cbe8%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22254%22%20cy%3D%22176%22%20r%3D%225%22%20fill%3D%22%2383cbe8%22%2F%3E%3C%2Fsvg%3E",
+        "alt": "Sample diagram of radar imagery for ICEYE",
+        "caption": "Sample illustration: Radar imagery. Not a company photograph or measured data."
+      },
+      "financials": [
+        {
+          "label": "Market value",
+          "period": "Example snapshot",
+          "detail": "Illustrative valuation; not a market quote.",
+          "value": "USD 910M"
+        },
+        {
+          "label": "Earnings",
+          "period": "Example quarter",
+          "detail": "Illustrative net income or loss.",
+          "value": "−USD 17M"
+        },
+        {
+          "label": "Revenue",
+          "period": "Example quarter",
+          "detail": "Illustrative operating revenue.",
+          "value": "USD 54M"
+        },
+        {
+          "label": "Funding",
+          "period": "Example financing history",
+          "detail": "Illustrative cumulative financing.",
+          "value": "USD 128M"
+        }
+      ],
+      "activity": [
+        {
+          "date": "2026-11-23",
+          "title": "Profile created",
+          "details": "Illustrative market scope and capabilities were added to the sample catalog."
+        },
+        {
+          "date": "2026-11-24",
+          "title": "Sample evidence added",
+          "details": "ICEYE broadens access to on-demand SAR monitoring",
+          "recordId": "s5"
+        }
+      ]
+    },
+    {
+      "id": "aurora",
+      "name": "Aurora Insight",
+      "mark": "A",
+      "tone": "plum",
+      "website": "https://www.maxar.com/",
+      "overview": "Spectrum analytics business tracked as an adjacent offering. The profile is historical and does not assert current ownership or operating status.",
+      "capabilities": [
+        {
+          "name": "Spectrum analytics",
+          "category": "Spectrum & GNSS",
+          "description": "Radio spectrum measurement and analysis.",
+          "status": "Core offering"
+        },
+        {
+          "name": "Geospatial delivery",
+          "category": "RF Analytics",
+          "description": "Integration of spectrum observations into geospatial products.",
+          "status": "Adjacent offering"
+        }
+      ],
+      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%2330233b%22%2F%3E%3Cpath%20d%3D%22M12%2023h10l7%2016%208-22%208%2015h7%22%20fill%3D%22none%22%20stroke%3D%22%23d8a7e6%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "logoKind": "sample",
+      "incorporated": {
+        "date": "2016-04-06",
+        "sample": true,
+        "detail": "Fictional example. The legal incorporation date has not been verified."
+      },
+      "image": {
+        "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20230%22%3E%3Crect%20width%3D%22640%22%20height%3D%22230%22%20fill%3D%22%2330233b%22%2F%3E%3Cg%20stroke%3D%22%23d8a7e6%22%20opacity%3D%22.19%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%2090h640M0%20130h640M0%20170h640M0%20210h640M40%2076v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134%22%2F%3E%3Cellipse%20cx%3D%22295%22%20cy%3D%22140%22%20rx%3D%2268%22%20ry%3D%2242%22%2F%3E%3Cellipse%20cx%3D%22295%22%20cy%3D%22140%22%20rx%3D%2296%22%20ry%3D%2261%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%23d8a7e6%22%20font-family%3D%22system-ui%2Csans-serif%22%3E%3Ctext%20x%3D%2229%22%20y%3D%2234%22%20font-size%3D%2220%22%20font-weight%3D%22600%22%3EAurora%20Insight%3C%2Ftext%3E%3Ctext%20x%3D%2229%22%20y%3D%2256%22%20font-size%3D%2212%22%3ESpectrum%20analytics%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M15%20151h60l30-27%2020%2027%2038-52%2040%2052%2038-28%2030%2028%2040-62%2035%2062h260%22%20fill%3D%22none%22%20stroke%3D%22%23d8a7e6%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22295%22%20cy%3D%22176%22%20r%3D%225%22%20fill%3D%22%23d8a7e6%22%2F%3E%3C%2Fsvg%3E",
+        "alt": "Sample diagram of spectrum analytics for Aurora Insight",
+        "caption": "Sample illustration: Spectrum analytics. Not a company photograph or measured data."
+      },
+      "financials": [
+        {
+          "label": "Market value",
+          "period": "Example snapshot",
+          "detail": "Illustrative valuation; not a market quote.",
+          "value": "USD 145M"
+        },
+        {
+          "label": "Earnings",
+          "period": "Example quarter",
+          "detail": "Illustrative net income or loss.",
+          "value": "−USD 5M"
+        },
+        {
+          "label": "Revenue",
+          "period": "Example quarter",
+          "detail": "Illustrative operating revenue.",
+          "value": "USD 15M"
+        },
+        {
+          "label": "Funding",
+          "period": "Example financing history",
+          "detail": "Illustrative cumulative financing.",
+          "value": "USD 27M"
+        }
+      ],
+      "activity": [
+        {
+          "date": "2026-11-23",
+          "title": "Profile created",
+          "details": "Illustrative market scope and capabilities were added to the sample catalog."
+        },
+        {
+          "date": "2026-11-24",
+          "title": "Sample evidence added",
+          "details": "Spectrum analytics providers test new commercial delivery models",
+          "recordId": "s6"
+        }
+      ]
+    },
+    {
+      "id": "planet",
+      "name": "Planet Labs",
+      "mark": "P",
+      "tone": "mint",
+      "website": "https://www.planet.com/",
+      "overview": "Earth observation company offering recurring satellite imagery and analysis. Tracked for product packaging, distribution and customer overlap.",
+      "capabilities": [
+        {
+          "name": "Optical imagery",
+          "category": "Earth Observation",
+          "description": "Recurring optical Earth observation and imagery products.",
+          "status": "Core offering"
+        },
+        {
+          "name": "Change analysis",
+          "category": "Earth Observation",
+          "description": "Commercial monitoring and change-detection tools.",
+          "status": "Core offering"
+        }
+      ],
+      "logo": "",
+      "logoKind": "sample",
+      "foundedYear": "2010",
+      "incorporated": {
+        "date": "2020-12-15",
+        "detail": "Delaware incorporation of dMY Technology Group IV, the registrant subsequently renamed Planet Labs PBC.",
+        "source": "https://www.sec.gov/Archives/edgar/data/1836833/000162828022013652/planetlabs424b3.htm"
+      },
+      "image": {
+        "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20230%22%3E%3Crect%20width%3D%22640%22%20height%3D%22230%22%20fill%3D%22%23123336%22%2F%3E%3Cg%20stroke%3D%22%237ad5ba%22%20opacity%3D%22.19%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%2090h640M0%20130h640M0%20170h640M0%20210h640M40%2076v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134%22%2F%3E%3Cellipse%20cx%3D%22336%22%20cy%3D%22140%22%20rx%3D%2268%22%20ry%3D%2242%22%2F%3E%3Cellipse%20cx%3D%22336%22%20cy%3D%22140%22%20rx%3D%2296%22%20ry%3D%2261%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%237ad5ba%22%20font-family%3D%22system-ui%2Csans-serif%22%3E%3Ctext%20x%3D%2229%22%20y%3D%2234%22%20font-size%3D%2220%22%20font-weight%3D%22600%22%3EPlanet%20Labs%3C%2Ftext%3E%3Ctext%20x%3D%2229%22%20y%3D%2256%22%20font-size%3D%2212%22%3EOptical%20imagery%20and%20change%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M48%20150%20147%20101%20245%20150%20342%20101%20438%20150%20538%20101%20615%20138%22%20fill%3D%22none%22%20stroke%3D%22%237ad5ba%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22336%22%20cy%3D%22176%22%20r%3D%225%22%20fill%3D%22%237ad5ba%22%2F%3E%3C%2Fsvg%3E",
+        "alt": "Sample diagram of optical imagery and change for Planet Labs",
+        "caption": "Sample illustration: Optical imagery and change. Not a company photograph or measured data."
+      },
+      "financials": [
+        {
+          "label": "Market value",
+          "period": "Example snapshot",
+          "detail": "Illustrative valuation; not a market quote.",
+          "value": "USD 1275M"
+        },
+        {
+          "label": "Earnings",
+          "period": "Example quarter",
+          "detail": "Illustrative net income or loss.",
+          "value": "−USD 18M"
+        },
+        {
+          "label": "Revenue",
+          "period": "Example quarter",
+          "detail": "Illustrative operating revenue.",
+          "value": "USD 61M"
+        },
+        {
+          "label": "Funding",
+          "period": "Example financing history",
+          "detail": "Illustrative cumulative financing.",
+          "value": "USD 85M"
+        }
+      ],
+      "activity": [
+        {
+          "date": "2026-11-23",
+          "title": "Profile created",
+          "details": "Illustrative market scope and capabilities were added to the sample catalog."
+        },
+        {
+          "date": "2026-11-24",
+          "title": "Sample evidence added",
+          "details": "Planet explores sector-specific monitoring bundles",
+          "recordId": "s7"
+        }
+      ]
+    },
+    {
+      "id": "umbra",
+      "name": "Umbra",
+      "mark": "U",
+      "tone": "sky",
+      "website": "https://umbra.space/",
+      "overview": "Commercial SAR company tracked for imagery access, data licensing and potential RF-plus-imagery partnerships.",
+      "capabilities": [
+        {
+          "name": "SAR imagery and tasking",
+          "category": "Earth Observation",
+          "description": "Commercial imagery and data collection services.",
+          "status": "Core offering"
+        },
+        {
+          "name": "Data distribution",
+          "category": "Earth Observation",
+          "description": "Partner access and distribution for imagery buyers.",
+          "status": "Adjacent offering"
+        }
+      ],
+      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23183242%22%2F%3E%3Cpath%20d%3D%22M12%2034h40M18%2026c8-16%2020-16%2028%200M18%2042c8%2015%2020%2015%2028%200%22%20fill%3D%22none%22%20stroke%3D%22%2383cbe8%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "logoKind": "sample",
+      "foundedYear": "2015",
+      "incorporated": {
+        "date": "2015-11-05",
+        "sample": true,
+        "detail": "Fictional example. The legal incorporation date has not been verified."
+      },
+      "image": {
+        "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20230%22%3E%3Crect%20width%3D%22640%22%20height%3D%22230%22%20fill%3D%22%23183242%22%2F%3E%3Cg%20stroke%3D%22%2383cbe8%22%20opacity%3D%22.19%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%2090h640M0%20130h640M0%20170h640M0%20210h640M40%2076v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134%22%2F%3E%3Cellipse%20cx%3D%22377%22%20cy%3D%22140%22%20rx%3D%2268%22%20ry%3D%2242%22%2F%3E%3Cellipse%20cx%3D%22377%22%20cy%3D%22140%22%20rx%3D%2296%22%20ry%3D%2261%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%2383cbe8%22%20font-family%3D%22system-ui%2Csans-serif%22%3E%3Ctext%20x%3D%2229%22%20y%3D%2234%22%20font-size%3D%2220%22%20font-weight%3D%22600%22%3EUmbra%3C%2Ftext%3E%3Ctext%20x%3D%2229%22%20y%3D%2256%22%20font-size%3D%2212%22%3ERadar%20tasking%20and%20access%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M48%20170Q130%2061%20216%20170T385%20170T555%20170%22%20fill%3D%22none%22%20stroke%3D%22%2383cbe8%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22377%22%20cy%3D%22176%22%20r%3D%225%22%20fill%3D%22%2383cbe8%22%2F%3E%3C%2Fsvg%3E",
+        "alt": "Sample diagram of radar tasking and access for Umbra",
+        "caption": "Sample illustration: Radar tasking and access. Not a company photograph or measured data."
+      },
+      "financials": [
+        {
+          "label": "Market value",
+          "period": "Example snapshot",
+          "detail": "Illustrative valuation; not a market quote.",
+          "value": "USD 280M"
+        },
+        {
+          "label": "Earnings",
+          "period": "Example quarter",
+          "detail": "Illustrative net income or loss.",
+          "value": "−USD 7M"
+        },
+        {
+          "label": "Revenue",
+          "period": "Example quarter",
+          "detail": "Illustrative operating revenue.",
+          "value": "USD 21M"
+        },
+        {
+          "label": "Funding",
+          "period": "Example financing history",
+          "detail": "Illustrative cumulative financing.",
+          "value": "USD 53M"
+        }
+      ],
+      "activity": [
+        {
+          "date": "2026-11-23",
+          "title": "Profile created",
+          "details": "Illustrative market scope and capabilities were added to the sample catalog."
+        },
+        {
+          "date": "2026-11-24",
+          "title": "Sample evidence added",
+          "details": "Umbra evaluates new imagery distribution partnerships",
+          "recordId": "s8"
+        }
+      ]
+    },
+    {
+      "id": "airbus",
+      "name": "Airbus",
+      "mark": "A",
+      "tone": "gold",
+      "website": "https://www.airbus.com/",
+      "overview": "Aerospace group whose space and geospatial businesses overlap with commercial satellite data and services.",
+      "capabilities": [
+        {
+          "name": "Optical and radar data",
+          "category": "Earth Observation",
+          "description": "Commercial Earth observation imagery and geospatial services.",
+          "status": "Core offering"
+        },
+        {
+          "name": "Space information services",
+          "category": "Space Domain Awareness",
+          "description": "Track commercial space-data interoperability and standards.",
+          "status": "Watch"
+        }
+      ],
+      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%233e2e23%22%2F%3E%3Cpath%20d%3D%22M14%2045%2023%2019h18l9%2026M19%2034h26%22%20fill%3D%22none%22%20stroke%3D%22%23eeb775%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "logoKind": "sample",
+      "incorporated": {
+        "date": "1999-12-13",
+        "sample": true,
+        "detail": "Fictional example. The legal incorporation date has not been verified."
+      },
+      "image": {
+        "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20230%22%3E%3Crect%20width%3D%22640%22%20height%3D%22230%22%20fill%3D%22%233e2e23%22%2F%3E%3Cg%20stroke%3D%22%23eeb775%22%20opacity%3D%22.19%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%2090h640M0%20130h640M0%20170h640M0%20210h640M40%2076v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134%22%2F%3E%3Cellipse%20cx%3D%22418%22%20cy%3D%22140%22%20rx%3D%2268%22%20ry%3D%2242%22%2F%3E%3Cellipse%20cx%3D%22418%22%20cy%3D%22140%22%20rx%3D%2296%22%20ry%3D%2261%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%23eeb775%22%20font-family%3D%22system-ui%2Csans-serif%22%3E%3Ctext%20x%3D%2229%22%20y%3D%2234%22%20font-size%3D%2220%22%20font-weight%3D%22600%22%3EAirbus%3C%2Ftext%3E%3Ctext%20x%3D%2229%22%20y%3D%2256%22%20font-size%3D%2212%22%3ESpace-data%20interoperability%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M45%20148h108l58-49h196l58%2049h110M155%20148l58%2032h193l60-32%22%20fill%3D%22none%22%20stroke%3D%22%23eeb775%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22418%22%20cy%3D%22176%22%20r%3D%225%22%20fill%3D%22%23eeb775%22%2F%3E%3C%2Fsvg%3E",
+        "alt": "Sample diagram of space-data interoperability for Airbus",
+        "caption": "Sample illustration: Space-data interoperability. Not a company photograph or measured data."
+      },
+      "financials": [
+        {
+          "label": "Market value",
+          "period": "Example snapshot",
+          "detail": "Illustrative valuation; not a market quote.",
+          "value": "USD 4380M"
+        },
+        {
+          "label": "Earnings",
+          "period": "Example quarter",
+          "detail": "Illustrative net income or loss.",
+          "value": "USD 152M"
+        },
+        {
+          "label": "Revenue",
+          "period": "Example quarter",
+          "detail": "Illustrative operating revenue.",
+          "value": "USD 960M"
+        },
+        {
+          "label": "Funding",
+          "period": "Example financing history",
+          "detail": "Illustrative cumulative financing.",
+          "value": "USD 240M"
+        }
+      ],
+      "activity": [
+        {
+          "date": "2026-11-23",
+          "title": "Profile created",
+          "details": "Illustrative market scope and capabilities were added to the sample catalog."
+        },
+        {
+          "date": "2026-11-24",
+          "title": "Sample evidence added",
+          "details": "European industry group proposes interoperable space data standards",
+          "recordId": "s9"
+        }
+      ]
+    },
+    {
+      "id": "rocket-lab",
+      "name": "Rocket Lab",
+      "mark": "R",
+      "tone": "plum",
+      "website": "https://www.rocketlabcorp.com/",
+      "overview": "Launch and space-systems company. An infrastructure watch rather than a direct substitute for RF analytics.",
+      "capabilities": [
+        {
+          "name": "Launch services",
+          "category": "Space Infrastructure",
+          "description": "Commercial launch services for small satellites.",
+          "status": "Core offering"
+        },
+        {
+          "name": "Satellite manufacturing",
+          "category": "Space Infrastructure",
+          "description": "Spacecraft and components for commercial constellations.",
+          "status": "Core offering"
+        }
+      ],
+      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%2330233b%22%2F%3E%3Cpath%20d%3D%22M13%2038%2030%2014l20%2024M19%2045h25M30%2023v19%22%20fill%3D%22none%22%20stroke%3D%22%23d8a7e6%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "logoKind": "sample",
+      "foundedYear": "2006",
+      "incorporated": {
+        "date": "2006-07-19",
+        "sample": true,
+        "detail": "Fictional example. The legal incorporation date has not been verified."
+      },
+      "image": {
+        "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20230%22%3E%3Crect%20width%3D%22640%22%20height%3D%22230%22%20fill%3D%22%2330233b%22%2F%3E%3Cg%20stroke%3D%22%23d8a7e6%22%20opacity%3D%22.19%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%2090h640M0%20130h640M0%20170h640M0%20210h640M40%2076v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134%22%2F%3E%3Cellipse%20cx%3D%22459%22%20cy%3D%22140%22%20rx%3D%2268%22%20ry%3D%2242%22%2F%3E%3Cellipse%20cx%3D%22459%22%20cy%3D%22140%22%20rx%3D%2296%22%20ry%3D%2261%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%23d8a7e6%22%20font-family%3D%22system-ui%2Csans-serif%22%3E%3Ctext%20x%3D%2229%22%20y%3D%2234%22%20font-size%3D%2220%22%20font-weight%3D%22600%22%3ERocket%20Lab%3C%2Ftext%3E%3Ctext%20x%3D%2229%22%20y%3D%2256%22%20font-size%3D%2212%22%3ELaunch%20and%20space%20systems%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M32%20178Q133%20177%20241%20124T564%2074%22%20fill%3D%22none%22%20stroke%3D%22%23d8a7e6%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22459%22%20cy%3D%22176%22%20r%3D%225%22%20fill%3D%22%23d8a7e6%22%2F%3E%3C%2Fsvg%3E",
+        "alt": "Sample diagram of launch and space systems for Rocket Lab",
+        "caption": "Sample illustration: Launch and space systems. Not a company photograph or measured data."
+      },
+      "financials": [
+        {
+          "label": "Market value",
+          "period": "Example snapshot",
+          "detail": "Illustrative valuation; not a market quote.",
+          "value": "USD 1530M"
+        },
+        {
+          "label": "Earnings",
+          "period": "Example quarter",
+          "detail": "Illustrative net income or loss.",
+          "value": "−USD 15M"
+        },
+        {
+          "label": "Revenue",
+          "period": "Example quarter",
+          "detail": "Illustrative operating revenue.",
+          "value": "USD 77M"
+        },
+        {
+          "label": "Funding",
+          "period": "Example financing history",
+          "detail": "Illustrative cumulative financing.",
+          "value": "USD 96M"
+        }
+      ],
+      "activity": [
+        {
+          "date": "2026-11-23",
+          "title": "Profile created",
+          "details": "Illustrative market scope and capabilities were added to the sample catalog."
+        },
+        {
+          "date": "2026-11-24",
+          "title": "Sample evidence added",
+          "details": "Smallsat launch availability remains a procurement consideration",
+          "recordId": "s10"
+        }
+      ]
+    },
+    {
+      "id": "blacksky",
+      "name": "BlackSky",
+      "mark": "B",
+      "tone": "blue",
+      "website": "https://www.blacksky.com/",
+      "overview": "Commercial Earth observation and analytics company relevant to buyers assessing time-sensitive geospatial data.",
+      "capabilities": [
+        {
+          "name": "Optical imagery",
+          "category": "Earth Observation",
+          "description": "Commercial imagery and monitoring services.",
+          "status": "Core offering"
+        },
+        {
+          "name": "Analytics delivery",
+          "category": "Earth Observation",
+          "description": "Geospatial analysis and enterprise integration.",
+          "status": "Core offering"
+        }
+      ],
+      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23182e51%22%2F%3E%3Cpath%20d%3D%22M13%2026l19-13%2019%2013-19%2023-19-23Zm0%200h38M32%2013v36%22%20fill%3D%22none%22%20stroke%3D%22%2391baff%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "logoKind": "sample",
+      "incorporated": {
+        "date": "2018-06-12",
+        "sample": true,
+        "detail": "Fictional example. The legal incorporation date has not been verified."
+      },
+      "image": {
+        "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20230%22%3E%3Crect%20width%3D%22640%22%20height%3D%22230%22%20fill%3D%22%23182e51%22%2F%3E%3Cg%20stroke%3D%22%2391baff%22%20opacity%3D%22.19%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%2090h640M0%20130h640M0%20170h640M0%20210h640M40%2076v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134%22%2F%3E%3Cellipse%20cx%3D%22500%22%20cy%3D%22140%22%20rx%3D%2268%22%20ry%3D%2242%22%2F%3E%3Cellipse%20cx%3D%22500%22%20cy%3D%22140%22%20rx%3D%2296%22%20ry%3D%2261%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%2391baff%22%20font-family%3D%22system-ui%2Csans-serif%22%3E%3Ctext%20x%3D%2229%22%20y%3D%2234%22%20font-size%3D%2220%22%20font-weight%3D%22600%22%3EBlackSky%3C%2Ftext%3E%3Ctext%20x%3D%2229%22%20y%3D%2256%22%20font-size%3D%2212%22%3ETime-sensitive%20imagery%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M42%20156h132l38-45%2042%2045h84l46-62%2047%2062h140%22%20fill%3D%22none%22%20stroke%3D%22%2391baff%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22500%22%20cy%3D%22176%22%20r%3D%225%22%20fill%3D%22%2391baff%22%2F%3E%3C%2Fsvg%3E",
+        "alt": "Sample diagram of time-sensitive imagery for BlackSky",
+        "caption": "Sample illustration: Time-sensitive imagery. Not a company photograph or measured data."
+      },
+      "financials": [
+        {
+          "label": "Market value",
+          "period": "Example snapshot",
+          "detail": "Illustrative valuation; not a market quote.",
+          "value": "USD 255M"
+        },
+        {
+          "label": "Earnings",
+          "period": "Example quarter",
+          "detail": "Illustrative net income or loss.",
+          "value": "−USD 8M"
+        },
+        {
+          "label": "Revenue",
+          "period": "Example quarter",
+          "detail": "Illustrative operating revenue.",
+          "value": "USD 24M"
+        },
+        {
+          "label": "Funding",
+          "period": "Example financing history",
+          "detail": "Illustrative cumulative financing.",
+          "value": "USD 40M"
+        }
+      ],
+      "activity": [
+        {
+          "date": "2026-11-23",
+          "title": "Profile created",
+          "details": "Illustrative market scope and capabilities were added to the sample catalog."
+        },
+        {
+          "date": "2026-11-24",
+          "title": "Sample evidence added",
+          "details": "BlackSky explores lower-friction analytics onboarding",
+          "recordId": "s11"
+        }
+      ]
+    },
+    {
+      "id": "ghgsat",
+      "name": "GHGSat",
+      "mark": "G",
+      "tone": "mint",
+      "website": "https://www.ghgsat.com/",
+      "overview": "Satellite emissions-monitoring company. Adjacent market example for buyers evaluating specialized analytics and independent verification.",
+      "capabilities": [
+        {
+          "name": "Emissions monitoring",
+          "category": "Earth Observation",
+          "description": "Satellite observations and analysis for emissions reporting.",
+          "status": "Core offering"
+        }
+      ],
+      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23123336%22%2F%3E%3Cpath%20d%3D%22M15%2043c2-8%208-21%2017-26s16%209%2017%2026M18%2040h28%22%20fill%3D%22none%22%20stroke%3D%22%237ad5ba%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "logoKind": "sample",
+      "foundedYear": "2011",
+      "incorporated": {
+        "date": "2011-09-14",
+        "sample": true,
+        "detail": "Fictional example. The legal incorporation date has not been verified."
+      },
+      "image": {
+        "src": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20230%22%3E%3Crect%20width%3D%22640%22%20height%3D%22230%22%20fill%3D%22%23123336%22%2F%3E%3Cg%20stroke%3D%22%237ad5ba%22%20opacity%3D%22.19%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M0%2090h640M0%20130h640M0%20170h640M0%20210h640M40%2076v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134m80-134v134%22%2F%3E%3Cellipse%20cx%3D%22541%22%20cy%3D%22140%22%20rx%3D%2268%22%20ry%3D%2242%22%2F%3E%3Cellipse%20cx%3D%22541%22%20cy%3D%22140%22%20rx%3D%2296%22%20ry%3D%2261%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%237ad5ba%22%20font-family%3D%22system-ui%2Csans-serif%22%3E%3Ctext%20x%3D%2229%22%20y%3D%2234%22%20font-size%3D%2220%22%20font-weight%3D%22600%22%3EGHGSat%3C%2Ftext%3E%3Ctext%20x%3D%2229%22%20y%3D%2256%22%20font-size%3D%2212%22%3EEmissions%20monitoring%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M50%20163Q150%20152%20205%20132t98-22%2096%2024%2077%2027%20100-8%22%20fill%3D%22none%22%20stroke%3D%22%237ad5ba%22%20stroke-width%3D%223%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%22541%22%20cy%3D%22176%22%20r%3D%225%22%20fill%3D%22%237ad5ba%22%2F%3E%3C%2Fsvg%3E",
+        "alt": "Sample diagram of emissions monitoring for GHGSat",
+        "caption": "Sample illustration: Emissions monitoring. Not a company photograph or measured data."
+      },
+      "financials": [
+        {
+          "label": "Market value",
+          "period": "Example snapshot",
+          "detail": "Illustrative valuation; not a market quote.",
+          "value": "USD 195M"
+        },
+        {
+          "label": "Earnings",
+          "period": "Example quarter",
+          "detail": "Illustrative net income or loss.",
+          "value": "−USD 4M"
+        },
+        {
+          "label": "Revenue",
+          "period": "Example quarter",
+          "detail": "Illustrative operating revenue.",
+          "value": "USD 17M"
+        },
+        {
+          "label": "Funding",
+          "period": "Example financing history",
+          "detail": "Illustrative cumulative financing.",
+          "value": "USD 31M"
+        }
+      ],
+      "activity": [
+        {
+          "date": "2026-11-23",
+          "title": "Profile created",
+          "details": "Illustrative market scope and capabilities were added to the sample catalog."
+        },
+        {
+          "date": "2026-11-24",
+          "title": "Sample evidence added",
+          "details": "GHGSat highlights demand for independent emissions data",
+          "recordId": "s12"
+        }
+      ]
+    }
+  ],
+  "publishers": [
+    {
+      "id": "spacenews",
+      "name": "SpaceNews",
+      "mark": "SN",
+      "tone": "blue",
+      "website": "https://spacenews.com/",
+      "logo": "",
+      "logoKind": "sample"
+    },
+    {
+      "id": "via-satellite",
+      "name": "Via Satellite",
+      "mark": "VS",
+      "tone": "plum",
+      "website": "https://www.satellitetoday.com/",
+      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%2330233b%22%2F%3E%3Cpath%20d%3D%22M14%2042V18l36%2024V18M24%2042h16%22%20fill%3D%22none%22%20stroke%3D%22%23d8a7e6%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "logoKind": "sample"
+    },
+    {
+      "id": "space-intel-report",
+      "name": "Space Intel Report",
+      "mark": "SI",
+      "tone": "mint",
+      "website": "https://www.spaceintelreport.com/",
+      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23123336%22%2F%3E%3Cpath%20d%3D%22M13%2043%2032%2016l19%2027M20%2036h24%22%20fill%3D%22none%22%20stroke%3D%22%237ad5ba%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "logoKind": "sample"
+    },
+    {
+      "id": "uk-space-agency",
+      "name": "UK Space Agency",
+      "mark": "UK",
+      "tone": "gold",
+      "website": "https://www.gov.uk/government/organisations/uk-space-agency",
+      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%233e2e23%22%2F%3E%3Cpath%20d%3D%22M14%2020h36v24H14zM22%2029h20M22%2036h13%22%20fill%3D%22none%22%20stroke%3D%22%23eeb775%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "logoKind": "sample"
+    },
+    {
+      "id": "satellite-today",
+      "name": "Satellite Today",
+      "mark": "ST",
+      "tone": "sky",
+      "website": "https://www.satellitetoday.com/",
+      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23183242%22%2F%3E%3Cpath%20d%3D%22M13%2044h38M18%2038l14-19%2014%2019M27%2032h10%22%20fill%3D%22none%22%20stroke%3D%22%2383cbe8%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "logoKind": "sample"
+    },
+    {
+      "id": "geo-week-news",
+      "name": "Geo Week News",
+      "mark": "GW",
+      "tone": "blue",
+      "website": "https://www.geoweeknews.com/",
+      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23182e51%22%2F%3E%3Cpath%20d%3D%22M12%2042%2022%2018l11%2021%2010-21%209%2024%22%20fill%3D%22none%22%20stroke%3D%22%2391baff%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "logoKind": "sample"
+    },
+    {
+      "id": "esa",
+      "name": "ESA",
+      "mark": "ESA",
+      "tone": "plum",
+      "website": "https://www.esa.int/",
+      "logo": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%2330233b%22%2F%3E%3Cpath%20d%3D%22M14%2039c0-14%208-23%2018-23s18%209%2018%2023M15%2044h34M32%2016v28%22%20fill%3D%22none%22%20stroke%3D%22%23d8a7e6%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "logoKind": "sample"
+    }
+  ],
+  "mode": "sample"
+}

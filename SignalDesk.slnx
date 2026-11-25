@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SignalDesk.Api/SignalDesk.Api.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SignalDesk.Api.Tests/SignalDesk.Api.Tests.csproj" />
+  </Folder>
+</Solution>
