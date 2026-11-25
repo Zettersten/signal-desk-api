@@ -20,7 +20,7 @@ On this Mac the stable SDK is already installed under `~/.dotnet`; if your shell
 
 The default **sample** mode makes no provider calls and needs no credentials. It imports the frontend's actual 14 fictional records, 12 competitor profiles, and seven linked publishers. Do not cite sample stories or financials as reporting.
 
-Development access is restricted to loopback connections with trusted localhost Host/Origin headers. This is for a single developer on a trusted machine, not a network authentication scheme; do not expose or reverse-proxy the development listener. Production APIs fail closed while hosted database integration is deferred.
+The API has no authentication: documentation and all API operations are anonymous. Source approval, budget limits, and live-feature configuration remain required. Production database-dependent operations remain unavailable while hosted database integration is deferred; this is a persistence guard, not an authentication requirement.
 
 SQLite files live under `data/runtime/` and are Git-ignored. Sample and live use separate filenames and persisted dataset markers; changing a database's mode in place is rejected. A process-level file lock prevents two local application processes using the same database. EF migrations apply before local readiness; failed migrations stop startup.
 
@@ -34,7 +34,7 @@ VITE_SIGNAL_DESK_API_URL=http://localhost:5188 bun run dev
 
 Without that variable, the original mock transport remains selected. The API transport handles ETags/304, errors, cancellation, catalog validation, and relative profile media. Workspace, tray and reader windows use the same source. API-supplied activity is authoritative rather than duplicated by device-local profile diffs.
 
-The Tauri development CSP permits only the local API on port 5188 in addition to its existing origins. A later hosted desktop release must add its exact approved HTTPS API/media origins to the production CSP and implement the chosen login flow; no shared application or provider key belongs in `VITE_*` variables.
+The Tauri development CSP permits only the local API on port 5188 in addition to its existing origins. A later hosted desktop release must add its exact approved HTTPS API/media origins to the production CSP; no shared application or provider key belongs in `VITE_*` variables.
 
 ## HTTP compatibility
 
@@ -46,11 +46,11 @@ The Tauri development CSP permits only the local API on port 5188 in addition to
 - `/v1/signals` supports competitor/publisher/category/importance/date/text filters, a result limit of 1–100, and a cursor containing the last returned ID. A cursor outside the filtered result set returns 400.
 - Existing highlights, bookmarks, notes, folders, notifications, sharing, branding and document exports remain local.
 
-Scalar describes the actual FastEndpoints routes and DTOs. Its optional Scalar Agent feature is disabled. Hosted docs, when enabled explicitly, require the admin policy; provider credentials are never included.
+Scalar describes the actual FastEndpoints routes and DTOs. Its optional Scalar Agent feature is disabled. Scalar and OpenAPI are enabled publicly in every environment, including Production, without authentication or a documentation feature flag. Provider credentials are never included.
 
 ## AI services and enabling live collection
 
-The fixed catalog is in `AI/AiServiceCatalog.cs` and exposed through admin-only `GET /v1/ai/services`:
+The fixed catalog is in `AI/AiServiceCatalog.cs` and exposed through anonymous `GET /v1/ai/services`:
 
 - `perplexity-search`: ranked URL/excerpt discovery through **POST /search**, not Sonar or Perplexity's Agent API.
 - `typesafe-decisions`: batched Noul, Choice and Score judgments using pinned `jev-1.14.0`.
@@ -108,7 +108,7 @@ This example is **not** a claim that source access/redistribution has been appro
 
 ## Collection and review
 
-`POST /v1/ingestion/runs` with `{"sourceId":"spacenews"}` returns 202 plus a run ID/Location. Inspect `/v1/ingestion/runs/{id}` and retry terminal failed runs via `POST /v1/ingestion/runs/{id}/retry`. These are admin operations, not frontend Refresh.
+`POST /v1/ingestion/runs` with `{"sourceId":"spacenews"}` returns 202 plus a run ID/Location. Inspect `/v1/ingestion/runs/{id}` and retry terminal failed runs via `POST /v1/ingestion/runs/{id}/retry`. These operations are anonymous but still require collection/source/budget configuration; they are not frontend Refresh.
 
 The scheduler checks due approved sources every minute. Search sources are due daily and feeds hourly, subject to the daily query/document limits. Query plans contain at most three queries per source; Perplexity returns at most 20 combined web results. Sources rotate by due time. Search has a two-day overlap and a bounded initial lookback; coverage is best-effort, not all web reporting.
 
@@ -146,10 +146,10 @@ dotnet build SignalDesk.slnx -c Release --no-restore
 dotnet publish src/SignalDesk.Api -c Release --no-build -o artifacts/api
 ```
 
-Tests use isolated real SQLite files, HTTP/provider fakes, and no paid APIs. Coverage includes frontend relationships, Scalar/OpenAPI, conditional reads, one-record briefs, source import, SSRF/XXE guards, uncertain decisions, workflow publication, review atomicity, dataset separation, trust boundaries, provider request shapes, budget caps and ambiguous-outcome replay protection. Live precision/recall, cost and latency evaluations still require approved representative data and a paid test budget.
+Tests use isolated real SQLite files, HTTP/provider fakes, and no paid APIs. Coverage includes frontend relationships, Scalar/OpenAPI, conditional reads, one-record briefs, source import, SSRF/XXE guards, uncertain decisions, workflow publication, review atomicity, dataset separation, anonymous access, provider request shapes, budget caps and ambiguous-outcome replay protection. Live precision/recall, cost and latency evaluations still require approved representative data and a paid test budget.
 
 ## Azure status
 
 The existing `he-ai-poc-test` deployment workflow/secret reference is preserved. Its build now restores locked dependencies, audits packages, checks formatting, runs offline tests and explicitly publishes the API project. No local database or local configuration file is published.
 
-Hosted database selection/provisioning and production Entra login remain **deferred**. In Production, liveness works but readiness and `/v1` data operations return 503; the API never silently creates an ephemeral/network-share SQLite database. Do not treat a successful CD deployment as a production intelligence service until the hosted EF provider, migration/data-import strategy, secure connectivity, authorization, backups, concurrency and operational evaluations are completed.
+Hosted database selection/provisioning remains **deferred**. Authentication is not part of this API. Scalar and OpenAPI are public in Production. In Production, liveness works but readiness and `/v1` data operations return 503; the API never silently creates an ephemeral/network-share SQLite database. Do not treat a successful CD deployment as a production intelligence service until the hosted EF provider, migration/data-import strategy, secure connectivity, backups, concurrency and operational evaluations are completed.

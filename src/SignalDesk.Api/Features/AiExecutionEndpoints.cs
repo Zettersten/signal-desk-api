@@ -11,7 +11,7 @@ public sealed record AiExecutionInfo(string Id, string Provider, string Operatio
 
 public sealed class AiExecutionsEndpoint(IDbContextFactory<DeskDb> factory) : EndpointWithoutRequest<AiExecutionInfo[]>
 {
-    public override void Configure() { Get("/v1/ai/executions"); Policies("Admin"); }
+    public override void Configure() { Get("/v1/ai/executions"); AllowAnonymous(); }
     public override async Task HandleAsync(CancellationToken ct)
     {
         await using var db = await factory.CreateDbContextAsync(ct);
@@ -32,7 +32,7 @@ public sealed class ResolveExecutionEndpoint(IDbContextFactory<DeskDb> factory) 
     public override void Configure()
     {
         Post("/v1/ai/executions/{id}/allow-retry");
-        Policies("Admin");
+        AllowAnonymous();
         Summary(s => s.Summary = "Explicitly authorize another potentially billable attempt after reconciling an uncertain provider outcome. Previous reservation remains charged.");
     }
     public override async Task HandleAsync(ResolveExecutionRequest req, CancellationToken ct)

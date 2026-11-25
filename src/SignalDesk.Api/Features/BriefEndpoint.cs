@@ -15,7 +15,7 @@ public sealed class BriefEndpoint(CatalogStore store, IIntelligenceModel model, 
     public override void Configure()
     {
         Post("/v1/briefs");
-        Policies("Reader");
+        AllowAnonymous();
         Description(b => b.ProducesProblem(400).ProducesProblem(429).ProducesProblem(503).ProducesProblem(504));
         Summary(s => s.Summary = "Synchronous evidence-grounded analysis of 1–20 selected catalog records.");
     }

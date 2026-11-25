@@ -10,7 +10,7 @@ namespace SignalDesk.Api.Features;
 
 public sealed class AiServicesEndpoint(AiServiceCatalog catalog) : EndpointWithoutRequest<AiServiceDescriptor[]>
 {
-    public override void Configure() { Get("/v1/ai/services"); Policies("Admin"); }
+    public override void Configure() { Get("/v1/ai/services"); AllowAnonymous(); }
     public override Task HandleAsync(CancellationToken ct) => Send.OkAsync(catalog.List(), ct);
 }
 
@@ -19,7 +19,7 @@ public sealed record SourceInfo(string Id, string PublisherId, string Url, strin
 
 public sealed class SourcesEndpoint(IDbContextFactory<DeskDb> factory) : EndpointWithoutRequest<SourceInfo[]>
 {
-    public override void Configure() { Get("/v1/sources"); Policies("Admin"); }
+    public override void Configure() { Get("/v1/sources"); AllowAnonymous(); }
     public override async Task HandleAsync(CancellationToken ct)
     {
         await using var db = await factory.CreateDbContextAsync(ct);
@@ -40,7 +40,7 @@ public sealed class ApproveSourceRequest
 }
 public sealed class ApproveSourceEndpoint(IDbContextFactory<DeskDb> factory) : Endpoint<ApproveSourceRequest>
 {
-    public override void Configure() { Patch("/v1/sources/{id}"); Policies("Admin"); }
+    public override void Configure() { Patch("/v1/sources/{id}"); AllowAnonymous(); }
     public override async Task HandleAsync(ApproveSourceRequest req, CancellationToken ct)
     {
         if (req.Kind is not ("search" or "rss") || req.RightsAcknowledgement.Trim().Length < 20)
@@ -63,7 +63,7 @@ public sealed class CreateRunEndpoint(RunQueue queue) : Endpoint<CreateRunReques
     public override void Configure()
     {
         Post("/v1/ingestion/runs");
-        Policies("Admin");
+        AllowAnonymous();
         Description(b => b.Produces<CollectionRun>(202).ProducesProblem(400).ProducesProblem(503));
     }
     public override async Task HandleAsync(CreateRunRequest req, CancellationToken ct)
@@ -76,7 +76,7 @@ public sealed class CreateRunEndpoint(RunQueue queue) : Endpoint<CreateRunReques
 public sealed class RunIdRequest { public Guid Id { get; set; } }
 public sealed class RunEndpoint(IDbContextFactory<DeskDb> factory) : Endpoint<RunIdRequest, CollectionRun>
 {
-    public override void Configure() { Get("/v1/ingestion/runs/{id}"); Policies("Admin"); }
+    public override void Configure() { Get("/v1/ingestion/runs/{id}"); AllowAnonymous(); }
     public override async Task HandleAsync(RunIdRequest req, CancellationToken ct)
     {
         await using var db = await factory.CreateDbContextAsync(ct);
@@ -85,7 +85,7 @@ public sealed class RunEndpoint(IDbContextFactory<DeskDb> factory) : Endpoint<Ru
 }
 public sealed class RetryRunEndpoint(IDbContextFactory<DeskDb> factory, RunQueue queue) : Endpoint<RunIdRequest, CollectionRun>
 {
-    public override void Configure() { Post("/v1/ingestion/runs/{id}/retry"); Policies("Admin"); }
+    public override void Configure() { Post("/v1/ingestion/runs/{id}/retry"); AllowAnonymous(); }
     public override async Task HandleAsync(RunIdRequest req, CancellationToken ct)
     {
         await using var db = await factory.CreateDbContextAsync(ct);
@@ -98,7 +98,7 @@ public sealed record ReviewInfo(string Id, string DocumentId, string Reason, str
     string? ProposalJson, string EvidenceJson, string SourceUrl, DateTime? PublishedUtc);
 public sealed class ReviewsEndpoint(IDbContextFactory<DeskDb> factory) : EndpointWithoutRequest<ReviewInfo[]>
 {
-    public override void Configure() { Get("/v1/review/items"); Policies("Admin"); }
+    public override void Configure() { Get("/v1/review/items"); AllowAnonymous(); }
     public override async Task HandleAsync(CancellationToken ct)
     {
         await using var db = await factory.CreateDbContextAsync(ct);
@@ -117,7 +117,7 @@ public sealed class ReviewDecisionRequest
 public sealed class ReviewDecisionEndpoint(IDbContextFactory<DeskDb> factory, PublicationService publication)
     : Endpoint<ReviewDecisionRequest>
 {
-    public override void Configure() { Post("/v1/review/items/{id}/decision"); Policies("Admin"); }
+    public override void Configure() { Post("/v1/review/items/{id}/decision"); AllowAnonymous(); }
     public override async Task HandleAsync(ReviewDecisionRequest req, CancellationToken ct)
     {
         if (req.Note.Trim().Length < 10) throw new ApiException(400, "Record a review rationale.");
@@ -132,7 +132,7 @@ public sealed class ReviewDecisionEndpoint(IDbContextFactory<DeskDb> factory, Pu
             await Send.NoContentAsync(ct);
             return;
         }
-        var reviewer = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "authenticated-reviewer";
+        var reviewer = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "anonymous";
         var changed = await db.Reviews.Where(x => x.Id == review.Id && x.State == "pending").ExecuteUpdateAsync(s =>
             s.SetProperty(x => x.State, "rejected").SetProperty(x => x.DecidedUtc, DateTime.UtcNow)
                 .SetProperty(x => x.DecidedBy, reviewer).SetProperty(x => x.DecisionNote, req.Note), ct);

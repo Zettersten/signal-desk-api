@@ -145,6 +145,27 @@ public sealed class ApiTests
     }
 
     [Fact]
+    public async Task Production_Scalar_and_OpenApi_are_public_without_database_or_auth_configuration()
+    {
+        using var factory = new DeskFactory(environment: "Production");
+        using var client = factory.CreateClient(new WebApplicationFactoryClientOptions { AllowAutoRedirect = false });
+        var scalar = await client.GetAsync("/scalar/v1", Ct);
+        Assert.Equal(HttpStatusCode.OK, scalar.StatusCode);
+        Assert.Contains("Signal Desk API", await scalar.Content.ReadAsStringAsync(Ct));
+        var document = await client.GetFromJsonAsync<JsonElement>("/openapi/v1.json", Ct);
+        Assert.True(document.GetProperty("paths").TryGetProperty("/v1/catalog", out _));
+        Assert.DoesNotContain("\"securitySchemes\"", document.GetRawText());
+        foreach (var route in document.GetProperty("paths").EnumerateObject())
+            foreach (var operation in route.Value.EnumerateObject())
+                if (operation.Value.ValueKind == JsonValueKind.Object && operation.Value.TryGetProperty("security", out var security))
+                    Assert.Equal(0, security.GetArrayLength());
+        var root = await client.GetAsync("/", Ct);
+        Assert.Equal(HttpStatusCode.Redirect, root.StatusCode);
+        Assert.Equal("/scalar/v1", root.Headers.Location?.OriginalString);
+        Assert.Equal(HttpStatusCode.ServiceUnavailable, (await client.GetAsync("/health/ready", Ct)).StatusCode);
+    }
+
+    [Fact]
     public async Task Resource_routes_pagination_and_cors_are_bounded()
     {
         using var factory = new DeskFactory();
@@ -166,13 +187,15 @@ public sealed class ApiTests
     [Theory]
     [InlineData("rebound.attacker.example", null)]
     [InlineData("localhost", "https://untrusted.example")]
-    public async Task Local_authentication_rejects_untrusted_host_or_origin(string host, string? origin)
+    public async Task Api_does_not_require_authentication(string host, string? origin)
     {
         using var factory = new DeskFactory();
         using var client = factory.CreateClient();
         using var request = new HttpRequestMessage(HttpMethod.Get, "/v1/ai/services");
         request.Headers.Host = host;
         if (origin is not null) request.Headers.Add("Origin", origin);
-        Assert.Equal(HttpStatusCode.Unauthorized, (await client.SendAsync(request, Ct)).StatusCode);
+        var response = await client.SendAsync(request, Ct);
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Empty(response.Headers.WwwAuthenticate);
     }
 }

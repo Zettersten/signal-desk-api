@@ -1,8 +1,6 @@
 using System.Text.Json.Serialization;
 using FastEndpoints;
 using FastEndpoints.OpenApi;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Http.Resilience;
 using Scalar.AspNetCore;
@@ -60,26 +58,13 @@ builder.Services.AddFastEndpoints().AddJobQueues<JobRecord, JobStorage>().OpenAp
     o.DocumentName = "v1";
     o.Title = "Signal Desk API";
     o.Version = "v1";
+    o.EnableJWTBearerAuth = false;
     o.ConfigureOpenApi = options => options.AddSchemaTransformer(ContractSchemas.TransformAsync);
 });
 builder.Services.ConfigureHttpJsonOptions(o => o.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
 builder.Services.AddCors(o => o.AddDefaultPolicy(p => p.WithOrigins(desk.AllowedOrigins)
-    .WithMethods("GET", "POST", "PATCH").WithHeaders("Content-Type", "Authorization", "If-None-Match")
+    .WithMethods("GET", "POST", "PATCH").WithHeaders("Content-Type", "If-None-Match")
     .WithExposedHeaders("ETag")));
-if (local)
-    builder.Services.AddAuthentication("Local").AddScheme<AuthenticationSchemeOptions, LocalAuthentication>("Local", _ => { });
-else
-    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o =>
-    {
-        o.Authority = builder.Configuration["Authentication:Authority"];
-        o.Audience = builder.Configuration["Authentication:Audience"];
-        o.RequireHttpsMetadata = true;
-    });
-builder.Services.AddAuthorization(o =>
-{
-    o.AddPolicy("Reader", p => p.RequireAuthenticatedUser().RequireRole("Reader", "Admin"));
-    o.AddPolicy("Admin", p => p.RequireAuthenticatedUser().RequireRole("Admin"));
-});
 
 var app = builder.Build();
 app.Use(async (context, next) =>
@@ -106,8 +91,6 @@ app.Use(async (context, next) =>
 });
 app.UseStaticFiles();
 app.UseCors();
-app.UseAuthentication();
-app.UseAuthorization();
 app.UseFastEndpoints(o =>
 {
     o.Serializer.Options.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
@@ -121,13 +104,9 @@ app.MapGet("/health/ready", async (IDbContextFactory<DeskDb> factory, Cancellati
     return await db.Database.CanConnectAsync(ct) && !(await db.Database.GetPendingMigrationsAsync(ct)).Any()
         ? Results.Ok(new { status = "ready", mode = desk.Mode }) : Results.Problem(statusCode: 503);
 }).AllowAnonymous();
-if (local || builder.Configuration.GetValue<bool>("Documentation:Enabled"))
-{
-    var spec = app.MapOpenApi();
-    var scalar = app.MapScalarApiReference(o => o.WithTitle("Signal Desk API").AddDocument("v1").DisableAgent());
-    if (!local) { spec.RequireAuthorization("Admin"); scalar.RequireAuthorization("Admin"); }
-}
-app.MapGet("/", () => Results.Redirect(local ? "/scalar" : "/health/live")).AllowAnonymous();
+app.MapOpenApi().AllowAnonymous();
+app.MapScalarApiReference(o => o.WithTitle("Signal Desk API").AddDocument("v1").DisableAgent()).AllowAnonymous();
+app.MapGet("/", () => Results.Redirect("/scalar/v1")).AllowAnonymous();
 if (local)
 {
     await using var scope = app.Services.CreateAsyncScope();
