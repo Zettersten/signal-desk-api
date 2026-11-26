@@ -4,21 +4,6 @@ using SignalDesk.Api.Configuration;
 
 namespace SignalDesk.Api.AI;
 
-public sealed record SearchHit(string Title, string Url, string Snippet, string? Date = null,
-    [property: JsonPropertyName("last_updated")] string? LastUpdated = null);
-public sealed record SearchResult(string Id, SearchHit[] Results) : IAiResultMetadata
-{
-    string? IAiResultMetadata.ResolvedModel => "search";
-    string? IAiResultMetadata.RequestId => Id;
-    long? IAiResultMetadata.InputTokens => null;
-    long? IAiResultMetadata.OutputTokens => null;
-}
-
-public interface ISearchService
-{
-    Task<SearchResult> SearchAsync(string[] queries, string[] domains, DateTime since, CancellationToken ct);
-}
-
 public sealed class PerplexitySearchService(
     HttpClient http, IConfiguration configuration, AiLedger ledger, IOptions<AiOptions> ai) : ISearchService
 {

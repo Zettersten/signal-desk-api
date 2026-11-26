@@ -7,8 +7,6 @@ using SignalDesk.Api.Data;
 
 namespace SignalDesk.Api.Ingestion;
 
-public sealed record PublicationProposal(SignalDraft Draft, EvidenceAssessment Assessment);
-
 public sealed class PublicationService(IDbContextFactory<DeskDb> factory, TimeProvider clock)
 {
     public static bool ValidDraft(SignalDraft draft, Paragraph[] paragraphs, Competitor[] companies) =>

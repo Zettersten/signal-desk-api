@@ -8,9 +8,6 @@ using SignalDesk.Api.Data;
 
 namespace SignalDesk.Api.Tests;
 
-[CollectionDefinition("Queue", DisableParallelization = true)]
-public sealed class QueueCollection;
-
 [Collection("Queue")]
 public sealed class QueueTests
 {

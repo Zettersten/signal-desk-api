@@ -11,8 +11,6 @@ using SignalDesk.Api.Data;
 
 namespace SignalDesk.Api.Ingestion;
 
-public sealed record FetchedPage(string Text, string MediaType);
-
 public sealed class SafeFetcher
 {
     public static string Host(string value) => new Uri(value).IdnHost.ToLowerInvariant().Removeprefix();
@@ -137,9 +135,4 @@ public sealed class SafeFetcher
             Availability = paragraphs.Length == 0 ? "unavailable" : "article"
         };
     }
-}
-
-internal static class HostExtensions
-{
-    public static string Removeprefix(this string host) => host.StartsWith("www.", StringComparison.Ordinal) ? host[4..] : host;
 }

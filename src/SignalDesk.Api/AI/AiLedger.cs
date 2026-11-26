@@ -6,14 +6,6 @@ using SignalDesk.Api.Data;
 
 namespace SignalDesk.Api.AI;
 
-public interface IAiResultMetadata
-{
-    string? ResolvedModel { get; }
-    string? RequestId { get; }
-    long? InputTokens { get; }
-    long? OutputTokens { get; }
-}
-
 public sealed class AiLedger(IDbContextFactory<DeskDb> factory, IOptions<DeskOptions> options, TimeProvider clock)
 {
     private readonly SemaphoreSlim gate = new(1);

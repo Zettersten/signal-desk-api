@@ -8,28 +8,6 @@ using SignalDesk.Api.Contracts;
 
 namespace SignalDesk.Api.AI;
 
-public sealed record ProviderUsage(
-    [property: System.Text.Json.Serialization.JsonPropertyName("input_tokens")] long? InputTokens,
-    [property: System.Text.Json.Serialization.JsonPropertyName("output_tokens")] long? OutputTokens);
-public sealed record DecisionResult(string Model, IReadOnlyDictionary<string, JsonElement> Answers, ProviderUsage? Usage = null) : IAiResultMetadata
-{
-    string? IAiResultMetadata.ResolvedModel => Model;
-    string? IAiResultMetadata.RequestId => null;
-    long? IAiResultMetadata.InputTokens => Usage?.InputTokens;
-    long? IAiResultMetadata.OutputTokens => Usage?.OutputTokens;
-}
-public sealed record EvidenceAssessment(double Relevant, double FitsDomain, string Category, int Significance, IReadOnlyDictionary<string, double> Companies)
-{
-    public string Outcome => Relevant <= .3 || FitsDomain <= .3 ? "irrelevant" :
-        Relevant >= .7 && FitsDomain >= .7 && Companies.Values.Any(v => v >= .7) ? "candidate" : "review";
-}
-
-public interface IDecisionService
-{
-    Task<EvidenceAssessment> AssessAsync(Paragraph[] evidence, Competitor[] companies, CancellationToken ct);
-    Task<bool> SupportsAsync(object evidence, object claims, CancellationToken ct);
-}
-
 public sealed class TypeSafeDecisionService(
     HttpClient http, IConfiguration configuration, AiLedger ledger, IOptions<AiOptions> options,
     ILogger<TypeSafeDecisionService>? logger = null) : IDecisionService

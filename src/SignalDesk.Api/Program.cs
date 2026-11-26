@@ -21,7 +21,7 @@ if (!local && (desk.EnableCollectors || desk.EnableLiveAi))
     throw new InvalidOperationException("Hosted database integration is deferred. Hosted collection is disabled.");
 var databasePath = Path.GetFullPath(desk.DatabasePath.Replace("{mode}", desk.Mode), builder.Environment.ContentRootPath);
 if (local) Directory.CreateDirectory(Path.GetDirectoryName(databasePath)!);
-using var databaseLock = local
+using var databaseLock = builder.Environment.IsDevelopment()
     ? new FileStream(databasePath + ".lock", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None)
     : null;
 builder.Services.AddPooledDbContextFactory<DeskDb>(o => o.UseSqlite(

@@ -22,15 +22,10 @@ public sealed class BriefEndpoint(CatalogStore store, IIntelligenceModel model, 
 
     public override async Task HandleAsync(BriefInput req, CancellationToken ct)
     {
-        if (req.Records is not { Length: >= 1 and <= 20 } || string.IsNullOrWhiteSpace(req.Objective) ||
-            req.Objective.Length > 3000 || !Modes.Contains(req.Mode) || !Audiences.Contains(req.Audience) ||
-            req.Records.Any(r => r is null || string.IsNullOrWhiteSpace(r.Id)) ||
-            req.Records.Select(r => r.Id).Distinct(StringComparer.Ordinal).Count() != req.Records.Length)
-            throw new ApiException(400, "Select 1–20 unique records, an objective of 1–3000 characters, and a supported audience/framing.");
         var catalog = await store.LoadAsync(ct);
         var records = req.Records.Select(r => catalog.Records.FirstOrDefault(x => string.Equals(x.Id, r.Id))
             ?? throw new ApiException(400, "A selected record is not in the current catalog.")).ToArray();
-        if (records.Select(r => r.Sample).Distinct().Count() != 1) throw new ApiException(400, "Mixed sample/live evidence is not allowed.");
+        if (records.Select(r => r.Sample).Distinct().Count() != 1) ThrowError("Mixed sample/live evidence is not allowed.");
         if (string.Equals(catalog.Mode, "sample"))
         {
             await Send.OkAsync(new("Sample evidence analysis",

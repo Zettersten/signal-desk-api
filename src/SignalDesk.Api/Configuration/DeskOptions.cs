@@ -11,19 +11,3 @@ public sealed class DeskOptions
     public int DailyDocuments { get; set; } = 50;
     public string[] AllowedOrigins { get; set; } = ["http://localhost:5173", "tauri://localhost", "http://tauri.localhost", "https://tauri.localhost"];
 }
-
-public sealed class AiOptions
-{
-    public string TypeSafeModel { get; set; } = "jev-1.14.0";
-    public string PlannerModel { get; set; } = "";
-    public string TransformerModel { get; set; } = "";
-    public string BriefModel { get; set; } = "";
-    public decimal SearchQueryReserveUsd { get; set; }
-    public decimal DecisionReserveUsd { get; set; }
-    public decimal OpenAiReserveUsd { get; set; }
-}
-
-public sealed class ApiException(int status, string message) : Exception(message)
-{
-    public int Status { get; } = status;
-}

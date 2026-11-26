@@ -3,8 +3,6 @@ using SignalDesk.Api.Configuration;
 
 namespace SignalDesk.Api.AI;
 
-public sealed record AiServiceDescriptor(string Id, string Provider, string Responsibility, string? Model, bool Configured, bool Enabled);
-
 public sealed class AiServiceCatalog(IConfiguration configuration, IOptions<DeskOptions> desk, IOptions<AiOptions> ai)
 {
     public AiServiceDescriptor[] List() =>

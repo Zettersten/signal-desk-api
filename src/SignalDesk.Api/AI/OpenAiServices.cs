@@ -10,19 +10,6 @@ using SignalDesk.Api.Data;
 
 namespace SignalDesk.Api.AI;
 
-public sealed record ResearchQueries(string[] Queries);
-public sealed record FactProposal(string Kind, string Label, string Value, string? Currency, string? Period, string ParagraphId, string Quote);
-public sealed record SignalDraft(string Title, string Summary, string CompetitorId, string[] ParagraphIds, FactProposal[] Facts);
-public sealed record BriefDraft(string Title, string Text, string[] RecordIds);
-public sealed record ModelResult<T>(T Data, string? ResolvedModel, string? RequestId, long? InputTokens, long? OutputTokens) : IAiResultMetadata;
-
-public interface IIntelligenceModel
-{
-    Task<ResearchQueries> PlanAsync(string publisher, string[] topics, string[] companies, CancellationToken ct);
-    Task<SignalDraft> TransformAsync(DocumentRow document, Competitor[] companies, CancellationToken ct);
-    Task<BriefDraft> BriefAsync(BriefInput input, CancellationToken ct);
-}
-
 public sealed class OpenAiServices(IConfiguration configuration, IOptions<AiOptions> options, AiLedger ledger) : IIntelligenceModel
 {
     private const string Grounding =
@@ -103,7 +90,7 @@ public sealed class OpenAiServices(IConfiguration configuration, IOptions<AiOpti
     public Task<BriefDraft> BriefAsync(BriefInput input, CancellationToken ct) =>
         GenerateAsync<BriefDraft>("brief", options.Value.BriefModel,
             "Audit the selected evidence, then write the requested analysis for HawkEye 360 in <=800 words. " +
-            "Use plain text or Markdown headings/lists; no HTML or images. Cite each factual assertion using supplied [recordId] references. " +
+            "Use plain text or Markdown headings/lists; no HTML or images. Write each factual statement as one short sentence that closely follows the wording of a single cited record, and end it with that record's [recordId]. Never combine two facts in one sentence. Do not add figures, dates, names or causes that the cited record does not state. " +
             "Clearly label interpretation, evidence gaps, and next verification steps: start each such paragraph with 'Interpretation:', 'Evidence gap:', or 'Next verification:'. Every other paragraph must be a factual statement supported by the cited records. Do not browse or add sources. " +
             "Return recordIds listing all cited IDs. If any input is sample, label the entire analysis fictional.",
             input, ct, cache: false, validate: draft => draft.Text.Length <= 16000 &&

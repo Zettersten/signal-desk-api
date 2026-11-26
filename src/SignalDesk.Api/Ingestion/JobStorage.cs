@@ -5,12 +5,6 @@ using SignalDesk.Api.Configuration;
 
 namespace SignalDesk.Api.Ingestion;
 
-public sealed record CollectSource(Guid RunId) : ICommand;
-public sealed class CollectSourceHandler(SourceCollector collector) : ICommandHandler<CollectSource>
-{
-    public Task ExecuteAsync(CollectSource command, CancellationToken ct) => collector.CollectAsync(command.RunId, ct);
-}
-
 public sealed class JobStorage(IDbContextFactory<DeskDb> factory) : IJobStorageProvider<JobRecord>
 {
     public bool DistributedJobProcessingEnabled => true;
