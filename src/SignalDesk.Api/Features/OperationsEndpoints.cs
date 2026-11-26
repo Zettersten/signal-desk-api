@@ -123,7 +123,7 @@ public sealed class ReviewDecisionEndpoint(IDbContextFactory<DeskDb> factory, Pu
         if (req.Note.Trim().Length < 10) throw new ApiException(400, "Record a review rationale.");
         await using var db = await factory.CreateDbContextAsync(ct);
         var review = await db.Reviews.FindAsync([req.Id], ct) ?? throw new ApiException(404, "Review not found.");
-        if (review.State != "pending") throw new ApiException(409, "Review has already been decided.");
+        if (!string.Equals(review.State, "pending")) throw new ApiException(409, "Review has already been decided.");
         if (req.Accept)
         {
             if (review.ProposalJson is null) throw new ApiException(400, "There is no valid proposal to accept.");

@@ -1,3 +1,4 @@
+using System.Globalization;
 using Microsoft.EntityFrameworkCore;
 using SignalDesk.Api.AI;
 using SignalDesk.Api.Configuration;
@@ -13,14 +14,15 @@ public sealed class PublicationService(IDbContextFactory<DeskDb> factory, TimePr
     public static bool ValidDraft(SignalDraft draft, Paragraph[] paragraphs, Competitor[] companies) =>
         !string.IsNullOrWhiteSpace(draft.Title) && draft.Title.Length <= 500 &&
         !string.IsNullOrWhiteSpace(draft.Summary) && draft.Summary.Length <= 3000 &&
-        !draft.Summary.Contains('<') && !draft.Title.Contains('<') && companies.Any(c => c.Id == draft.CompetitorId) &&
-        draft.ParagraphIds is { Length: > 0 } && draft.ParagraphIds.All(id => paragraphs.Any(p => p.Id == id)) &&
+        !draft.Summary.Contains('<') && !draft.Title.Contains('<') &&
+        companies.Any(c => string.Equals(c.Id, draft.CompetitorId)) &&
+        draft.ParagraphIds is { Length: > 0 } && draft.ParagraphIds.All(id => paragraphs.Any(p => string.Equals(p.Id, id))) &&
         draft.Facts is { Length: <= 20 } && draft.Facts.All(f => f is not null &&
             f.Kind is "capability" or "financial" or "foundedYear" or "incorporated" or "overview" &&
             !string.IsNullOrWhiteSpace(f.Label) && !string.IsNullOrWhiteSpace(f.Value) &&
             !string.IsNullOrWhiteSpace(f.Quote) && f.Value.Length <= 4000 &&
-            (f.Kind != "financial" || new[] { "Market value", "Earnings", "Revenue", "Funding" }.Contains(f.Label)) &&
-            paragraphs.Any(p => p.Id == f.ParagraphId && p.Text.Contains(f.Quote, StringComparison.Ordinal)));
+            (!string.Equals(f.Kind, "financial") || new[] { "Market value", "Earnings", "Revenue", "Funding" }.Contains(f.Label)) &&
+            paragraphs.Any(p => string.Equals(p.Id, f.ParagraphId) && p.Text.Contains(f.Quote, StringComparison.Ordinal)));
 
     public async Task ReviewAsync(DocumentRow document, string reason, PublicationProposal? proposal, CancellationToken ct)
     {
@@ -44,13 +46,7 @@ public sealed class PublicationService(IDbContextFactory<DeskDb> factory, TimePr
     {
         await using var db = await factory.CreateDbContextAsync(ct);
         await using var transaction = await db.Database.BeginTransactionAsync(ct);
-        ReviewRow? review = null;
-        if (reviewId is not null)
-        {
-            review = await db.Reviews.SingleOrDefaultAsync(x => x.Id == reviewId && x.DocumentId == documentId, ct)
-                ?? throw new ApiException(404, "Review not found.");
-            if (review.State != "pending") throw new ApiException(409, "Review has already been decided.");
-        }
+        ReviewRow? review = reviewId is null ? null : await LoadPendingReviewAsync(db, reviewId, documentId, ct);
         var document = await db.Documents.Include(d => d.Source).ThenInclude(s => s.Publisher)
             .SingleAsync(x => x.Id == documentId, ct);
         if (document.PublishedUtc is null || document.PublishedUtc > clock.GetUtcNow().UtcDateTime.AddMinutes(5))
@@ -65,13 +61,13 @@ public sealed class PublicationService(IDbContextFactory<DeskDb> factory, TimePr
             if (review is not null) throw new ApiException(409, "Evidence has already been published.");
             return;
         }
-        var company = companies.Single(c => c.Id == draft.CompetitorId);
+        var company = companies.Single(c => string.Equals(c.Id, draft.CompetitorId));
         var date = DateTime.SpecifyKind(document.PublishedUtc.Value, DateTimeKind.Utc);
         var age = (clock.GetUtcNow().UtcDateTime - date).TotalDays;
         var importance = Math.Clamp(25 + proposal.Assessment.Significance * 20 + (age <= 2 ? 15 : age <= 7 ? 5 : 0), 0, 100);
         var signal = new Signal($"live-{document.Id}", company.Id, document.Source.PublisherId,
             company.Name, document.Source.Publisher.Name, draft.Title, draft.Summary, paragraphs,
-            date.ToString("O"), proposal.Assessment.Category, importance, date.ToString("HH:mm"),
+            date.ToString("O"), proposal.Assessment.Category, importance, date.ToString("HH:mm", CultureInfo.InvariantCulture),
             company.Mark, company.Tone, false, document.CanonicalUrl);
         db.Signals.Add(new()
         {
@@ -84,54 +80,13 @@ public sealed class PublicationService(IDbContextFactory<DeskDb> factory, TimePr
             Importance = importance,
             PayloadJson = Wire.Encode(signal)
         });
-        if (approveFacts)
-        {
-            List<FactProposal> currentFacts = [];
-            foreach (var fact in draft.Facts)
-            {
-                if (!await db.Facts.AnyAsync(f => f.CompetitorId == company.Id && f.Kind == fact.Kind &&
-                    f.Label == fact.Label && f.Approved && f.Document.PublishedUtc > date, ct))
-                    currentFacts.Add(fact);
-                db.Facts.Add(new()
-                {
-                    CompetitorId = company.Id,
-                    DocumentId = documentId,
-                    Kind = fact.Kind,
-                    Label = fact.Label,
-                    Value = fact.Value,
-                    Currency = fact.Currency,
-                    Period = fact.Period,
-                    EvidenceJson = Wire.Encode(new { fact.ParagraphId, fact.Quote }),
-                    Approved = true
-                });
-            }
-            var financials = company.Financials.ToArray();
-            foreach (var fact in currentFacts.Where(f => f.Kind == "financial"))
-            {
-                var index = Array.FindIndex(financials, f => f.Label == fact.Label);
-                if (index >= 0) financials[index] = new(fact.Label,
-                    $"Reviewed source: {document.CanonicalUrl}; as of {date:yyyy-MM-dd}.", fact.Value, fact.Period);
-            }
-            var capabilities = company.Capabilities.Concat(currentFacts.Where(f => f.Kind == "capability")
-                .Select(f => new Capability(f.Label, signal.Category, "Watch", f.Value))).DistinctBy(c => c.Name).ToArray();
-            var next = company with { Financials = financials, Capabilities = capabilities };
-            var overview = currentFacts.FirstOrDefault(f => f.Kind == "overview");
-            var founded = currentFacts.FirstOrDefault(f => f.Kind == "foundedYear");
-            var incorporated = currentFacts.FirstOrDefault(f => f.Kind == "incorporated");
-            if (overview is not null) next = next with { Overview = overview.Value };
-            if (founded is not null && int.TryParse(founded.Value, out var year) && year is >= 1600 and <= 2100)
-                next = next with { FoundedYear = founded.Value };
-            if (incorporated is not null && DateOnly.TryParseExact(incorporated.Value, "yyyy-MM-dd", out _))
-                next = next with { Incorporated = new(incorporated.Value, "Reviewed legal incorporation evidence.", document.CanonicalUrl) };
-            var row = await db.Competitors.FindAsync([company.Id], ct);
-            row!.ProfileJson = Wire.Encode(next);
-        }
+        if (approveFacts) await ApplyApprovedFactsAsync(db, document, company, draft, date, signal.Category, ct);
         db.Activities.Add(new()
         {
             Id = $"activity-{signal.Id}",
             CompetitorId = company.Id,
             CreatedUtc = clock.GetUtcNow().UtcDateTime,
-            PayloadJson = Wire.Encode(new ProfileActivity(date.ToString("yyyy-MM-dd"),
+            PayloadJson = Wire.Encode(new ProfileActivity(date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture),
                 approveFacts && draft.Facts.Length > 0 ? "Reviewed profile evidence added" : "Evidence added",
                 signal.Title, signal.Id))
         });
@@ -145,5 +100,59 @@ public sealed class PublicationService(IDbContextFactory<DeskDb> factory, TimePr
         }
         await db.SaveChangesAsync(ct);
         await transaction.CommitAsync(ct);
+    }
+
+    private static async Task<ReviewRow> LoadPendingReviewAsync(DeskDb db, string reviewId, string documentId, CancellationToken ct)
+    {
+        var review = await db.Reviews.SingleOrDefaultAsync(x => x.Id == reviewId && x.DocumentId == documentId, ct)
+            ?? throw new ApiException(404, "Review not found.");
+        if (!string.Equals(review.State, "pending")) throw new ApiException(409, "Review has already been decided.");
+        return review;
+    }
+
+    private async Task ApplyApprovedFactsAsync(DeskDb db, DocumentRow document, Competitor company, SignalDraft draft,
+        DateTime date, string category, CancellationToken ct)
+    {
+        List<FactProposal> currentFacts = [];
+        foreach (var fact in draft.Facts)
+        {
+            if (!await db.Facts.AnyAsync(f => f.CompetitorId == company.Id && f.Kind == fact.Kind &&
+                f.Label == fact.Label && f.Approved && f.Document.PublishedUtc > date, ct))
+                currentFacts.Add(fact);
+            db.Facts.Add(new()
+            {
+                CompetitorId = company.Id,
+                DocumentId = document.Id,
+                Kind = fact.Kind,
+                Label = fact.Label,
+                Value = fact.Value,
+                Currency = fact.Currency,
+                Period = fact.Period,
+                EvidenceJson = Wire.Encode(new { fact.ParagraphId, fact.Quote }),
+                Approved = true
+            });
+        }
+        var financials = company.Financials.ToArray();
+        foreach (var fact in currentFacts.Where(f => string.Equals(f.Kind, "financial")))
+        {
+            var index = Array.FindIndex(financials, f => string.Equals(f.Label, fact.Label));
+            if (index >= 0) financials[index] = new(fact.Label,
+                $"Reviewed source: {document.CanonicalUrl}; as of {date:yyyy-MM-dd}.", fact.Value, fact.Period);
+        }
+        var capabilities = company.Capabilities.Concat(currentFacts.Where(f => string.Equals(f.Kind, "capability"))
+            .Select(f => new Capability(f.Label, category, "Watch", f.Value)))
+            .DistinctBy(c => c.Name, StringComparer.Ordinal).ToArray();
+        var next = company with { Financials = financials, Capabilities = capabilities };
+        var overview = currentFacts.FirstOrDefault(f => string.Equals(f.Kind, "overview"));
+        var founded = currentFacts.FirstOrDefault(f => string.Equals(f.Kind, "foundedYear"));
+        var incorporated = currentFacts.FirstOrDefault(f => string.Equals(f.Kind, "incorporated"));
+        if (overview is not null) next = next with { Overview = overview.Value };
+        if (founded is not null && int.TryParse(founded.Value, CultureInfo.InvariantCulture, out var year) && year is >= 1600 and <= 2100)
+            next = next with { FoundedYear = founded.Value };
+        if (incorporated is not null && DateOnly.TryParseExact(incorporated.Value, "yyyy-MM-dd",
+            CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
+            next = next with { Incorporated = new(incorporated.Value, "Reviewed legal incorporation evidence.", document.CanonicalUrl) };
+        var row = await db.Competitors.FindAsync([company.Id], ct);
+        row!.ProfileJson = Wire.Encode(next);
     }
 }

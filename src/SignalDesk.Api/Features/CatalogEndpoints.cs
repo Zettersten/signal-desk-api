@@ -1,3 +1,4 @@
+using System.Globalization;
 using FastEndpoints;
 using SignalDesk.Api.Configuration;
 using SignalDesk.Api.Contracts;
@@ -20,7 +21,7 @@ public sealed class CatalogEndpoint(CatalogStore store) : EndpointWithoutRequest
         var etag = $"\"{CatalogStore.Hash(Wire.Encode(catalog))}\"";
         HttpContext.Response.Headers.ETag = etag;
         HttpContext.Response.Headers.CacheControl = "private, no-cache";
-        if (HttpContext.Request.Headers.IfNoneMatch.Any(v => v == etag))
+        if (HttpContext.Request.Headers.IfNoneMatch.Any(v => string.Equals(v, etag)))
         {
             await Send.ResultAsync(Results.StatusCode(304));
             return;
@@ -56,18 +57,18 @@ public sealed class SignalsEndpoint(CatalogStore store) : Endpoint<SignalQuery, 
         if (req.Limit is < 1 or > 100 || req.MinImportance is < 0 or > 100 || req.Query?.Length > 300)
             throw new ApiException(400, "Invalid query bounds.");
         var records = (await store.LoadAsync(ct)).Records.Where(r =>
-            (req.CompetitorId is null || r.CompetitorId == req.CompetitorId) &&
-            (req.PublisherId is null || r.PublisherId == req.PublisherId) &&
-            (req.Category is null || r.Category == req.Category) &&
+            (req.CompetitorId is null || string.Equals(r.CompetitorId, req.CompetitorId)) &&
+            (req.PublisherId is null || string.Equals(r.PublisherId, req.PublisherId)) &&
+            (req.Category is null || string.Equals(r.Category, req.Category)) &&
             r.Importance >= req.MinImportance &&
-            (req.After is null || DateTime.Parse(r.PublishedAt).ToUniversalTime() >= req.After.Value.ToUniversalTime()) &&
-            (req.Before is null || DateTime.Parse(r.PublishedAt).ToUniversalTime() <= req.Before.Value.ToUniversalTime()) &&
+            (req.After is null || DateTime.Parse(r.PublishedAt, CultureInfo.InvariantCulture).ToUniversalTime() >= req.After.Value.ToUniversalTime()) &&
+            (req.Before is null || DateTime.Parse(r.PublishedAt, CultureInfo.InvariantCulture).ToUniversalTime() <= req.Before.Value.ToUniversalTime()) &&
             (req.Query is null || $"{r.Title} {r.Summary} {r.Company} {r.Publisher}".Contains(req.Query, StringComparison.OrdinalIgnoreCase)))
             .ToArray();
         var offset = 0;
         if (req.Cursor is not null)
         {
-            var index = Array.FindIndex(records, r => r.Id == req.Cursor);
+            var index = Array.FindIndex(records, r => string.Equals(r.Id, req.Cursor));
             if (index < 0) throw new ApiException(400, "Cursor is no longer in this result set.");
             offset = index + 1;
         }
@@ -79,7 +80,7 @@ public sealed class SignalEndpoint(CatalogStore store) : Endpoint<IdRequest, Sig
 {
     public override void Configure() { Get("/v1/signals/{id}"); AllowAnonymous(); }
     public override async Task HandleAsync(IdRequest req, CancellationToken ct) =>
-        await Send.OkAsync((await store.LoadAsync(ct)).Records.FirstOrDefault(x => x.Id == req.Id)
+        await Send.OkAsync((await store.LoadAsync(ct)).Records.FirstOrDefault(x => string.Equals(x.Id, req.Id))
             ?? throw new ApiException(404, "Record not found."), ct);
 }
 public sealed class CompetitorsEndpoint(CatalogStore store) : EndpointWithoutRequest<Competitor[]>
@@ -92,14 +93,14 @@ public sealed class CompetitorEndpoint(CatalogStore store) : Endpoint<IdRequest,
 {
     public override void Configure() { Get("/v1/competitors/{id}"); AllowAnonymous(); }
     public override async Task HandleAsync(IdRequest req, CancellationToken ct) =>
-        await Send.OkAsync((await store.LoadAsync(ct)).Competitors.FirstOrDefault(x => x.Id == req.Id)
+        await Send.OkAsync((await store.LoadAsync(ct)).Competitors.FirstOrDefault(x => string.Equals(x.Id, req.Id))
             ?? throw new ApiException(404, "Competitor not found."), ct);
 }
 public sealed class ActivityEndpoint(CatalogStore store) : Endpoint<IdRequest, ProfileActivity[]>
 {
     public override void Configure() { Get("/v1/competitors/{id}/activity"); AllowAnonymous(); }
     public override async Task HandleAsync(IdRequest req, CancellationToken ct) =>
-        await Send.OkAsync(((await store.LoadAsync(ct)).Competitors.FirstOrDefault(x => x.Id == req.Id)
+        await Send.OkAsync(((await store.LoadAsync(ct)).Competitors.FirstOrDefault(x => string.Equals(x.Id, req.Id))
             ?? throw new ApiException(404, "Competitor not found.")).Activity, ct);
 }
 public sealed class PublishersEndpoint(CatalogStore store) : EndpointWithoutRequest<Publisher[]>
@@ -112,6 +113,6 @@ public sealed class PublisherEndpoint(CatalogStore store) : Endpoint<IdRequest, 
 {
     public override void Configure() { Get("/v1/publishers/{id}"); AllowAnonymous(); }
     public override async Task HandleAsync(IdRequest req, CancellationToken ct) =>
-        await Send.OkAsync((await store.LoadAsync(ct)).Publishers.FirstOrDefault(x => x.Id == req.Id)
+        await Send.OkAsync((await store.LoadAsync(ct)).Publishers.FirstOrDefault(x => string.Equals(x.Id, req.Id))
             ?? throw new ApiException(404, "Publisher not found."), ct);
 }
