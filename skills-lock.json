@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "skills": {
+    "fast-endpoints": {
+      "source": "zeksdev/Skills",
+      "commit": "48ebc7de167e5479ec9ef810c23f51d63072c810",
+      "sourceType": "github",
+      "skillPath": "skills/fast-endpoints/SKILL.md",
+      "computedHash": "0892772b4928be18a2da81b9b32a010e147162cf28d87b9b5583c024ed4b512e"
+    }
+  }
+}
