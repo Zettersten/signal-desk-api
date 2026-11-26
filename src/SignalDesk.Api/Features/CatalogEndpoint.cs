@@ -12,7 +12,21 @@ public sealed class CatalogEndpoint(CatalogStore store) : EndpointWithoutRequest
     {
         Get("/v1/catalog");
         AllowAnonymous();
-        Summary(s => s.Summary = "Complete frontend-compatible intelligence catalog; never triggers collection.");
+        Description(b => b.WithTags("Catalog").Produces<Catalog>(200));
+        Summary(s =>
+        {
+            s.Summary = "Get the full catalog";
+            s.Description = """
+                Returns every record, competitor, and publisher in one response, plus the current `mode` (`sample` or `live`).
+
+                This endpoint only reads stored data. It never starts collection and never makes paid AI calls.
+
+                **Caching:** the response includes an `ETag`. Send it back in `If-None-Match` to receive `304 Not Modified` when nothing has changed.
+
+                **Typical use:** load this when the app starts, then re-request with `If-None-Match` on refresh.
+                """;
+            s.ResponseExamples[200] = new Catalog([], [], [new Publisher("blacksky", "BlackSky", "B", "blue", "https://blacksky.com")], "sample");
+        });
     }
 
     public override async Task HandleAsync(CancellationToken ct)

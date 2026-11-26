@@ -60,7 +60,29 @@ builder.Services.AddFastEndpoints().AddJobQueues<JobRecord, JobStorage>().OpenAp
     o.Title = "Signal Desk API";
     o.Version = "v1";
     o.EnableJWTBearerAuth = false;
-    o.ConfigureOpenApi = options => options.AddSchemaTransformer(ContractSchemas.TransformAsync);
+    o.ConfigureOpenApi = options => options
+        .AddSchemaTransformer(ContractSchemas.TransformAsync)
+        .AddDocumentTransformer((document, _, _) =>
+        {
+            document.Info.Description = """
+                Signal Desk turns public satellite-industry news into attributed, reviewed signals about competitors.
+
+                **Modes:** `sample` serves fictional evaluation data with no provider calls. `live` serves stored records and enables paid AI calls when configured.
+
+                **Typical workflow**
+                1. Read the catalog: `GET /v1/catalog`, or search with `GET /v1/signals`.
+                2. Approve a source: `PATCH /v1/sources/{id}`.
+                3. Collect: `POST /v1/ingestion/runs`, then poll `GET /v1/ingestion/runs/{id}`.
+                4. Review held items: `GET /v1/review/items`, then `POST /v1/review/items/{id}/decision`.
+                5. Analyse: `POST /v1/briefs`.
+                6. Watch spend: `GET /v1/ai/executions`.
+
+                **Authentication:** none. Endpoints are public, so run the API on a trusted network only.
+
+                **Errors:** responses use RFC 9457 problem details. Validation errors list the failing fields.
+                """;
+            return Task.CompletedTask;
+        });
 });
 builder.Services.ConfigureHttpJsonOptions(o => o.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
 builder.Services.AddCors(o => o.AddDefaultPolicy(p => p.WithOrigins(desk.AllowedOrigins)
@@ -96,15 +118,16 @@ app.UseFastEndpoints(o =>
 {
     o.Serializer.Options.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
     o.Errors.UseProblemDetails();
+    o.Endpoints.Configurator = ep => ep.DontAutoTag();
 });
-app.MapGet("/health/live", () => Results.Ok(new { status = "alive" })).AllowAnonymous();
+app.MapGet("/health/live", () => Results.Ok(new { status = "alive" })).AllowAnonymous().WithTags("Health");
 app.MapGet("/health/ready", async (IDbContextFactory<DeskDb> factory, CancellationToken ct) =>
 {
     if (!local) return Results.Problem(statusCode: 503, title: "Hosted persistence not configured.");
     await using var db = await factory.CreateDbContextAsync(ct);
     return await db.Database.CanConnectAsync(ct) && !(await db.Database.GetPendingMigrationsAsync(ct)).Any()
         ? Results.Ok(new { status = "ready", mode = desk.Mode }) : Results.Problem(statusCode: 503);
-}).AllowAnonymous();
+}).AllowAnonymous().WithTags("Health");
 app.MapOpenApi().AllowAnonymous();
 app.MapScalarApiReference(o => o.WithTitle("Signal Desk API").AddDocument("v1").DisableAgent()).AllowAnonymous();
 app.MapGet("/", () => Results.Redirect("/scalar/v1")).AllowAnonymous();

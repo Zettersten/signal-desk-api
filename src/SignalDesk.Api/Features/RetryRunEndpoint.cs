@@ -10,7 +10,17 @@ namespace SignalDesk.Api.Features;
 
 public sealed class RetryRunEndpoint(IDbContextFactory<DeskDb> factory, RunQueue queue) : Endpoint<RunIdRequest, CollectionRun>
 {
-    public override void Configure() { Post("/v1/ingestion/runs/{id}/retry"); AllowAnonymous(); }
+    public override void Configure()
+    {
+        Post("/v1/ingestion/runs/{id}/retry");
+        AllowAnonymous();
+        Description(b => b.WithTags("Ingestion").Produces<CollectionRun>(202).ProducesProblem(404).ProducesProblem(409));
+        Summary(s =>
+        {
+            s.Summary = "Retry a failed run";
+            s.Description = "Starts a new run for the same source as a run that failed. Only runs in `failed` or `enqueue-failed` can be retried; other states return `409`. Retrying creates a new run, so the original run's record is kept.";
+        });
+    }
     public override async Task HandleAsync(RunIdRequest req, CancellationToken ct)
     {
         await using var db = await factory.CreateDbContextAsync(ct);

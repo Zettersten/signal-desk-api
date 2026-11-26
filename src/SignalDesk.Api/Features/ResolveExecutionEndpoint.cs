@@ -12,7 +12,28 @@ public sealed class ResolveExecutionEndpoint(IDbContextFactory<DeskDb> factory) 
     {
         Post("/v1/ai/executions/{id}/allow-retry");
         AllowAnonymous();
-        Summary(s => s.Summary = "Explicitly authorize another potentially billable attempt after reconciling an uncertain provider outcome. Previous reservation remains charged.");
+        Description(b => b.WithTags("AI").ProducesProblem(404).ProducesProblem(409));
+        Summary(s =>
+        {
+            s.Summary = "Authorize a retry after reconciling an uncertain AI call";
+            s.Description = """
+                Use this only after you have checked the provider dashboard and confirmed the outcome of an execution that is `dispatched` or `failed-or-unknown`.
+
+                **What it does:** marks the execution `retry-authorized`, so the same request can be sent again. The earlier reservation stays charged. Nothing is refunded.
+
+                **Rules**
+                - The execution must be `reserved`, `dispatched`, or `failed-or-unknown`.
+                - The request must be at least 5 minutes old, so it cannot still be running.
+                - `note` is required (20-2000 characters). Record what you checked and why another charge is acceptable.
+
+                **Responses:** `204` on success, `404` if the execution does not exist, `409` if it is not in an unresolved state or is too recent.
+                """;
+            s.ExampleRequest = new ResolveExecutionRequest
+            {
+                Id = "e784be74cb634c3785a09a139f460434",
+                Note = "Checked the OpenAI usage dashboard: no charge was recorded for this request. Authorizing one retry."
+            };
+        });
     }
     public override async Task HandleAsync(ResolveExecutionRequest req, CancellationToken ct)
     {

@@ -16,8 +16,45 @@ public sealed class BriefEndpoint(CatalogStore store, IIntelligenceModel model, 
     {
         Post("/v1/briefs");
         AllowAnonymous();
-        Description(b => b.ProducesProblem(400).ProducesProblem(429).ProducesProblem(503).ProducesProblem(504));
-        Summary(s => s.Summary = "Synchronous evidence-grounded analysis of 1–20 selected catalog records.");
+        Description(b => b.WithTags("Briefs").Produces<Brief>(200).ProducesProblem(400).ProducesProblem(429).ProducesProblem(503).ProducesProblem(504));
+        Summary(s =>
+        {
+            s.Summary = "Write an evidence-grounded brief about selected signals";
+            s.Description = """
+                Writes a short analysis of 1-20 signals you select, and returns it in the same request. The brief cites each fact with a record ID, and the API checks each statement against the evidence before it returns.
+
+                **Choose `audience` and `mode`**
+                - `audience`: `Strategy leadership`, `Business development`, `Executive team`, or `Product and partnerships`.
+                - `mode`: `Strategic brief` (default), `Summarize`, or `Explain`.
+
+                **Output format:** `text` uses Markdown. Facts are one sentence each and end with a `[record-id]` citation. Commentary is labelled `Interpretation:`, `Evidence gap:`, `Next verification:`, or `Next step:`, so you can tell fact from judgment.
+
+                **Limits:** objective 1-3000 characters. Records must come from the same mode (all sample or all live). The request can take up to 60 seconds.
+
+                **Failures**
+                - `400`: invalid input, unknown record, or mixed sample and live records.
+                - `429`: two briefs are already running. Retry shortly.
+                - `503`: the draft could not be grounded in the selected evidence. Select different records, or narrow the objective.
+                - `504`: the model took longer than the time limit.
+
+                **Sample mode** returns a clearly labelled fictional analysis with no provider calls.
+                """;
+            s.ExampleRequest = new BriefInput(
+            [
+                new Signal("live-doc-a03c4459a8270a45d6c165f0a5cfe336b8cbccd3d34a3e77a1becd2ae9af1773", "blacksky", "spacenews",
+                    "BlackSky", "SpaceNews", "BlackSky Expands with EpochGeo Acquisition",
+                    "BlackSky acquired geospatial data firm EpochGeo to expand its real-time intelligence tools.",
+                    [new Paragraph("p-0-87b135dd1c4d", "BlackSky Technology announced it acquired geospatial data firm EpochGeo.")],
+                    "2026-11-24T14:16:47Z", "Earth Observation", 100, "14:16", "B", "blue", false,
+                    "https://spacenews.com/blacksky-acquires-data-firm-epochgeo/")
+            ],
+            "Summarize the BlackSky acquisition of EpochGeo and what it means for competing suppliers. Label interpretation and evidence gaps.",
+            "Strategy leadership",
+            "Strategic brief");
+            s.ResponseExamples[200] = new Brief(
+                "Strategic brief: BlackSky acquires EpochGeo",
+                "BlackSky acquired geospatial data firm EpochGeo to expand its real-time intelligence tools [live-doc-a03c4459a8270a45d6c165f0a5cfe336b8cbccd3d34a3e77a1becd2ae9af1773].\n\nInterpretation: The move suggests BlackSky wants to sell analysis as well as imagery.\n\nEvidence gap: The article does not give the deal value or closing date.");
+        });
     }
 
     public override async Task HandleAsync(BriefInput req, CancellationToken ct)
