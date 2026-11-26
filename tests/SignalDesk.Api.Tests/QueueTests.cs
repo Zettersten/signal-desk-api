@@ -41,7 +41,7 @@ public sealed class QueueTests
             await Task.Delay(50, ct);
             await using var db = await dbFactory.CreateDbContextAsync(ct);
             var saved = await db.Runs.SingleAsync(x => x.Id == run.Id, ct);
-            if (saved.State != "succeeded") continue;
+            if (!string.Equals(saved.State, "succeeded")) continue;
             Assert.NotNull(saved.JobTrackingId);
             Assert.Single(await db.Jobs.ToArrayAsync(ct));
             Assert.Empty(await db.AiExecutions.ToArrayAsync(ct));

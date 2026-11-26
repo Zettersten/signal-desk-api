@@ -24,7 +24,7 @@ public sealed class CatalogStore(IDbContextFactory<DeskDb> factory, IOptions<Des
             var profile = Wire.Decode<Competitor>(row.ProfileJson);
             return profile with
             {
-                Activity = [.. activity.Where(a => a.CompetitorId == row.Id)
+                Activity = [.. activity.Where(a => string.Equals(a.CompetitorId, row.Id))
                     .Select(a => Wire.Decode<ProfileActivity>(a.PayloadJson)), .. profile.Activity]
             };
         }).ToArray();

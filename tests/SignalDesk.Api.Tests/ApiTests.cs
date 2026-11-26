@@ -47,13 +47,13 @@ public sealed class ApiTests
         Assert.Equal(14, catalog.Records.Length);
         Assert.Equal(12, catalog.Competitors.Length);
         Assert.Equal(7, catalog.Publishers.Length);
-        Assert.Equal(14, catalog.Records.Select(x => x.Id).Distinct().Count());
+        Assert.Equal(14, catalog.Records.Select(x => x.Id).Distinct(StringComparer.Ordinal).Count());
         foreach (var record in catalog.Records)
         {
             Assert.True(record.Sample);
-            Assert.Equal(record.Company, catalog.Competitors.Single(c => c.Id == record.CompetitorId).Name);
-            Assert.Equal(record.Publisher, catalog.Publishers.Single(p => p.Id == record.PublisherId).Name);
-            Assert.Contains(record.Category, Wire.Categories);
+            Assert.Equal(record.Company, catalog.Competitors.Single(c => string.Equals(c.Id, record.CompetitorId)).Name);
+            Assert.Equal(record.Publisher, catalog.Publishers.Single(p => string.Equals(p.Id, record.PublisherId)).Name);
+            Assert.Contains(record.Category, Wire.Categories, StringComparer.Ordinal);
             Assert.InRange(record.Importance, 0, 100);
             Assert.NotEmpty(record.Paragraphs);
         }

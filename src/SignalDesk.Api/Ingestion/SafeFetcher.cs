@@ -36,9 +36,9 @@ public sealed class SafeFetcher
 
     public static Uri Validate(string address, string approvedUrl)
     {
-        if (!Uri.TryCreate(address, UriKind.Absolute, out var uri) || uri.Scheme != "https" ||
+        if (!Uri.TryCreate(address, UriKind.Absolute, out var uri) || !string.Equals(uri.Scheme, "https") ||
             uri.Port != 443 || uri.UserInfo.Length > 0 || Uri.CheckHostName(uri.IdnHost) != UriHostNameType.Dns ||
-            Host(address) != Host(approvedUrl))
+            !string.Equals(Host(address), Host(approvedUrl)))
             throw new ApiException(400, "URL is outside the approved HTTPS source.");
         return uri;
     }
@@ -103,7 +103,7 @@ public sealed class SafeFetcher
         return root.Descendants().Where(e => e.Name.LocalName is "item" or "entry").Take(50).Select(e =>
         {
             string Value(params string[] names) => e.Elements().FirstOrDefault(x => names.Contains(x.Name.LocalName))?.Value ?? "";
-            var link = e.Elements().FirstOrDefault(x => x.Name.LocalName == "link" &&
+            var link = e.Elements().FirstOrDefault(x => string.Equals(x.Name.LocalName, "link") &&
                 ((string?)x.Attribute("rel") is null or "alternate"));
             return new SearchHit(Value("title"), (string?)link?.Attribute("href") ?? link?.Value ?? "",
                 Value("description", "summary", "content"), Value("pubDate", "published", "updated"));
@@ -116,7 +116,7 @@ public sealed class SafeFetcher
         foreach (var node in page.QuerySelectorAll("script,style,nav,footer,header,form,aside")) node.Remove();
         var paragraphs = (page.QuerySelector("article") ?? page.QuerySelector("main"))
             ?.QuerySelectorAll("p").Select(p => p.TextContent.Trim()).Where(p => p.Length > 25)
-            .Distinct().Take(80).Select((text, i) => new Paragraph($"p-{i}-{CatalogStore.Hash(text)[..12]}", text)).ToArray() ?? [];
+            .Distinct(StringComparer.Ordinal).Take(80).Select((text, i) => new Paragraph($"p-{i}-{CatalogStore.Hash(text)[..12]}", text)).ToArray() ?? [];
         var rawDate = page.QuerySelector("meta[property='article:published_time']")?.GetAttribute("content") ??
             page.QuerySelector("time[datetime]")?.GetAttribute("datetime");
         var hasTime = rawDate?.Contains('T') == true && (rawDate.EndsWith('Z') || rawDate.Contains('+') || rawDate.Length >= 25);

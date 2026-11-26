@@ -103,7 +103,7 @@ public sealed class IntelligenceTests
         var proposal = new PublicationProposal(
             new("ICEYE financing", "ICEYE reports funding of USD 100 million.", "iceye", ["p1"],
                 [new("financial", "Funding", "USD 100 million", "USD", "Reported financing", "p1", "funding of USD 100 million")]),
-            new(.99, .99, "Market & Policy", 2, new() { ["iceye"] = .99 }));
+            new(.99, .99, "Market & Policy", 2, new Dictionary<string, double>(StringComparer.Ordinal) { ["iceye"] = .99 }));
         await publication.ReviewAsync(document, "Financial review required.", proposal, Ct);
         await publication.PublishAsync(document.Id, proposal, true, Ct, $"review-{document.Id}", "reviewer", "Source reviewed.");
         await using (var db = await dbFactory.CreateDbContextAsync(Ct))
@@ -135,16 +135,24 @@ public sealed class IntelligenceTests
     [InlineData(.9, .9, .4, "review")]
     public void Decision_truth_table_defines_uncertain_outcomes(double relevance, double fits, double company, string expected)
     {
-        var result = new EvidenceAssessment(relevance, fits, "RF Analytics", 2, new() { ["unseenlabs"] = company });
+        var result = new EvidenceAssessment(relevance, fits, "RF Analytics", 2, new Dictionary<string, double>(StringComparer.Ordinal) { ["unseenlabs"] = company });
         Assert.Equal(expected, result.Outcome);
     }
 
     [Fact]
     public void Missing_model_judgments_are_errors_not_negative_answers()
     {
-        Assert.Throws<ApiException>(() => TypeSafeDecisionService.Probability(new("test", []), "missing"));
+        Assert.Throws<ApiException>(() => TypeSafeDecisionService.Probability(new("test", new Dictionary<string, JsonElement>(StringComparer.Ordinal)), "missing"));
         using var json = JsonDocument.Parse("{\"noul\":1.1}");
-        Assert.Throws<ApiException>(() => TypeSafeDecisionService.Probability(new("test", new() { ["bad"] = json.RootElement }), "bad"));
+        Assert.Throws<ApiException>(() => TypeSafeDecisionService.Probability(new("test", new Dictionary<string, JsonElement>(StringComparer.Ordinal) { ["bad"] = json.RootElement }), "bad"));
+    }
+
+    [Fact]
+    public void Brief_support_check_skips_headings_and_labelled_commentary_only()
+    {
+        var statements = TypeSafeDecisionService.BriefStatements(
+            "## Summary\n\nBlackSky acquired EpochGeo [rec-1].\n\nInterpretation: This may strengthen BlackSky.\n\nEvidence gap: Price is undisclosed.\n\nNext verification: Check the filing.");
+        Assert.Equal(["BlackSky acquired EpochGeo [rec-1]."], statements);
     }
 
     [Fact]
@@ -178,7 +186,7 @@ public sealed class IntelligenceTests
         Assert.Single(result.Records);
         Assert.False(result.Records[0].Sample);
         Assert.Equal("iceye", result.Records[0].CompetitorId);
-        Assert.Single(result.Competitors.Single(x => x.Id == "iceye").Activity);
+        Assert.Single(result.Competitors.Single(x => string.Equals(x.Id, "iceye")).Activity);
     }
 
     [Fact]
@@ -204,7 +212,7 @@ public sealed class IntelligenceTests
     {
         public Task<EvidenceAssessment> AssessAsync(Paragraph[] evidence, Competitor[] companies, CancellationToken ct) =>
             Task.FromResult(new EvidenceAssessment(.99, .99, "Earth Observation", 2,
-                companies.ToDictionary(c => c.Id, c => c.Id == "iceye" ? .99 : .01)));
+                companies.ToDictionary(c => c.Id, c => string.Equals(c.Id, "iceye") ? .99 : .01, StringComparer.Ordinal)));
         public Task<bool> SupportsAsync(object evidence, object claims, CancellationToken ct) => Task.FromResult(true);
     }
     private sealed class FakeModel : IIntelligenceModel

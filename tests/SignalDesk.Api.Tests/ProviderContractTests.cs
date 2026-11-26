@@ -23,7 +23,7 @@ public sealed class ProviderContractTests
         var ledger = new AiLedger(dbFactory, Options.Create(new DeskOptions
         { Mode = "live", EnableLiveAi = true, DailyBudgetUsd = 1 }), TimeProvider.System);
         var configuration = new ConfigurationBuilder().AddInMemoryCollection(
-            new Dictionary<string, string?> { ["PERPLEXITY_API_KEY"] = "fixture-not-a-real-key" }).Build();
+            new Dictionary<string, string?>(StringComparer.Ordinal) { ["PERPLEXITY_API_KEY"] = "fixture-not-a-real-key" }).Build();
         using var http = new HttpClient(new Handler(async request =>
         {
             Assert.Equal("https://api.perplexity.ai/search", request.RequestUri!.AbsoluteUri);
@@ -52,7 +52,7 @@ public sealed class ProviderContractTests
         var ledger = new AiLedger(dbFactory, Options.Create(new DeskOptions
         { Mode = "live", EnableLiveAi = true, DailyBudgetUsd = 1 }), TimeProvider.System);
         var configuration = new ConfigurationBuilder().AddInMemoryCollection(
-            new Dictionary<string, string?> { ["TYPESAFE_API_KEY"] = "fixture-not-a-real-key" }).Build();
+            new Dictionary<string, string?>(StringComparer.Ordinal) { ["TYPESAFE_API_KEY"] = "fixture-not-a-real-key" }).Build();
         var calls = 0;
         using var http = new HttpClient(new Handler(request =>
         {

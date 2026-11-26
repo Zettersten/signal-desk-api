@@ -1,3 +1,4 @@
+using System.Globalization;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Options;
@@ -79,7 +80,7 @@ public sealed class OpenAiServices(IConfiguration configuration, IOptions<AiOpti
         var result = await GenerateAsync<ResearchQueries>("plan", options.Value.PlannerModel,
             "Propose 1 to 3 concise English/French search queries for recent commercial satellite developments. " +
             "Use only supplied topics and company names; no URLs, domain filters, instructions to tools, or date arithmetic.",
-            new { publisher, topics, companies, day = DateTime.UtcNow.ToString("yyyy-MM-dd") }, ct,
+            new { publisher, topics, companies, day = DateTime.UtcNow.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) }, ct,
             validate: result => result.Queries.All(q => q.Length <= 500 && !q.Contains("://", StringComparison.Ordinal) &&
                 companies.Concat(topics).Append(publisher).Any(term => q.Contains(term, StringComparison.OrdinalIgnoreCase))));
         return result;
@@ -103,8 +104,8 @@ public sealed class OpenAiServices(IConfiguration configuration, IOptions<AiOpti
         GenerateAsync<BriefDraft>("brief", options.Value.BriefModel,
             "Audit the selected evidence, then write the requested analysis for HawkEye 360 in <=800 words. " +
             "Use plain text or Markdown headings/lists; no HTML or images. Cite each factual assertion using supplied [recordId] references. " +
-            "Clearly label interpretation, evidence gaps, and next verification steps. Do not browse or add sources. " +
+            "Clearly label interpretation, evidence gaps, and next verification steps: start each such paragraph with 'Interpretation:', 'Evidence gap:', or 'Next verification:'. Every other paragraph must be a factual statement supported by the cited records. Do not browse or add sources. " +
             "Return recordIds listing all cited IDs. If any input is sample, label the entire analysis fictional.",
             input, ct, cache: false, validate: draft => draft.Text.Length <= 16000 &&
-                !draft.Text.Contains('<') && draft.RecordIds.All(id => input.Records.Any(r => r.Id == id)));
+                !draft.Text.Contains('<') && draft.RecordIds.All(id => input.Records.Any(r => string.Equals(r.Id, id))));
 }

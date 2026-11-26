@@ -71,7 +71,7 @@ app.Use(async (context, next) =>
 {
     try
     {
-        if (!local && context.Request.Path.StartsWithSegments("/v1"))
+        if (!local && context.Request.Path.StartsWithSegments("/v1", StringComparison.OrdinalIgnoreCase))
             throw new ApiException(503, "Hosted database configuration is deferred. Use local development.");
         await next(context);
     }

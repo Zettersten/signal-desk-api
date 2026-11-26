@@ -18,13 +18,13 @@ public sealed class IntelligenceOrchestrator(
             var paragraphs = Wire.Decode<Paragraph[]>(doc.ParagraphsJson);
             if (paragraphs.Length == 0) { await publication.ReviewAsync(doc, "No permitted article text.", null, token); return null; }
             var assessment = await decisions.AssessAsync(paragraphs, companies, token);
-            if (assessment.Outcome == "irrelevant")
+            if (string.Equals(assessment.Outcome, "irrelevant"))
             {
                 await using var db = await factory.CreateDbContextAsync(token);
                 await db.Documents.Where(x => x.Id == doc.Id).ExecuteUpdateAsync(s => s.SetProperty(x => x.State, "irrelevant"), token);
                 return null;
             }
-            if (assessment.Outcome != "candidate")
+            if (!string.Equals(assessment.Outcome, "candidate"))
             { await publication.ReviewAsync(doc, "Ambiguous relevance or company association.", null, token); return null; }
             var draft = await model.TransformAsync(doc, companies, token);
             return new(draft, assessment);
