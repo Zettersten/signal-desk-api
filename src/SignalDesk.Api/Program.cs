@@ -10,7 +10,8 @@ using SignalDesk.Api.AI;
 using SignalDesk.Api.Ingestion;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Configuration.AddJsonFile("appsettings.Local.json", optional: true).AddEnvironmentVariables();
+if (builder.Environment.IsDevelopment()) builder.Configuration.AddJsonFile("appsettings.Local.json", optional: true);
+builder.Configuration.AddEnvironmentVariables();
 builder.Services.Configure<DeskOptions>(builder.Configuration.GetSection("Desk"));
 builder.Services.Configure<AiOptions>(builder.Configuration.GetSection("AiServices"));
 var desk = builder.Configuration.GetSection("Desk").Get<DeskOptions>() ?? new();
