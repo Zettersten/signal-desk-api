@@ -16,4 +16,7 @@ public sealed class CollectionRun
     public int Published { get; set; }
     public int Reviewed { get; set; }
     public string? Error { get; set; }
+    public string? Step { get; set; }
+    public int Processed { get; set; }
+    public int? Total { get; set; }
 }

@@ -15,7 +15,7 @@ partial class DeskDbModelSnapshot : ModelSnapshot
     // If you encounter a merge conflict in the line below, it means you need to
     // discard one of the migration branches and recreate its migrations on top of
     // the other branch. See https://aka.ms/efcore-docs-migrations-conflicts for more info.
-    public override string LastMigrationId => "20261125034256_AiReconciliationAudit";
+    public override string LastMigrationId => "20261126173632_AddRunProgress";
 
     protected override void BuildModel(ModelBuilder modelBuilder)
     {
@@ -129,6 +129,9 @@ partial class DeskDbModelSnapshot : ModelSnapshot
                 b.Property<Guid?>("JobTrackingId")
                     .HasColumnType("TEXT");
 
+                b.Property<int>("Processed")
+                    .HasColumnType("INTEGER");
+
                 b.Property<int>("Published")
                     .HasColumnType("INTEGER");
 
@@ -142,6 +145,12 @@ partial class DeskDbModelSnapshot : ModelSnapshot
                 b.Property<string>("State")
                     .IsRequired()
                     .HasColumnType("TEXT");
+
+                b.Property<string>("Step")
+                    .HasColumnType("TEXT");
+
+                b.Property<int?>("Total")
+                    .HasColumnType("INTEGER");
 
                 b.HasKey("Id");
 

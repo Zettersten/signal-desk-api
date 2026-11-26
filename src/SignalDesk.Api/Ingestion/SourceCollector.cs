@@ -21,16 +21,30 @@ public sealed class SourceCollector(
         run.State = "running";
         source.LastAttemptUtc = clock.GetUtcNow().UtcDateTime;
         await db.SaveChangesAsync(ct);
+        run.Step = "evaluating-captured";
+        await db.SaveChangesAsync(ct);
         var pending = await db.Documents.Where(x => x.SourceId == source.Id && x.State == "captured").ToArrayAsync(ct);
         foreach (var doc in pending) await EvaluateAsync(doc, ct);
+        run.Step = "discovering";
+        await db.SaveChangesAsync(ct);
         var results = await DiscoverAsync(runId, source, db, ct);
-        foreach (var hit in results.Results.Take(50))
+        var hits = results.Results.Take(50).ToArray();
+        run.Step = "processing";
+        run.Total = hits.Length;
+        run.Processed = 0;
+        await db.SaveChangesAsync(ct);
+        foreach (var hit in hits)
         {
             ct.ThrowIfCancellationRequested();
             await ProcessHitAsync(hit, results.Id, run, source, db, ct);
+            run.Processed++;
+            await db.SaveChangesAsync(ct);
         }
+        run.Step = "finalizing";
+        await db.SaveChangesAsync(ct);
         run.Published = await db.Documents.CountAsync(x => x.SourceId == source.Id && x.State == "published", ct);
         run.Reviewed = await db.Documents.CountAsync(x => x.SourceId == source.Id && x.State == "review", ct);
+        run.Step = "finished";
         run.State = "succeeded";
         run.FinishedUtc = clock.GetUtcNow().UtcDateTime;
         source.LastSuccessUtc = run.FinishedUtc;
