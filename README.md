@@ -148,6 +148,54 @@ dotnet publish src/SignalDesk.Api -c Release --no-build -o artifacts/api
 
 Tests use isolated real SQLite files, HTTP/provider fakes, and no paid APIs. Coverage includes frontend relationships, Scalar/OpenAPI, conditional reads, one-record briefs, source import, SSRF/XXE guards, uncertain decisions, workflow publication, review atomicity, dataset separation, anonymous access, provider request shapes, budget caps and ambiguous-outcome replay protection. Live precision/recall, cost and latency evaluations still require approved representative data and a paid test budget.
 
+## Environment variables and secrets
+
+Configuration is read from `appsettings*.json`, then `appsettings.Local.json` (Development only, Git-ignored), then environment variables. Use `__` for nested keys, for example `Desk__Mode`. User secrets work the same way in Development.
+
+**Provider keys (secrets).** Set these where the API runs. Never commit them, and never put them in `VITE_*` variables.
+
+| Variable | Used by |
+| --- | --- |
+| `PERPLEXITY_API_KEY` | Perplexity Search (source discovery) |
+| `OPENAI_API_KEY` | Research planner, transformer, and briefs |
+| `TYPESAFE_API_KEY` | TypeSafe Jev decisions (relevance, support checks) |
+
+**Desk settings.**
+
+| Variable | Default | Meaning |
+| --- | --- | --- |
+| `Desk__Mode` | `sample` | `sample` (fictional data, no provider calls) or `live` |
+| `Desk__EnableLiveAi` | `false` | Allows paid provider calls. Local development only |
+| `Desk__EnableCollectors` | `false` | Runs the scheduler and collection. Local development only |
+| `Desk__DailyBudgetUsd` | `0` | Daily spend cap. Work is deferred at the cap. Must be above `0` for live AI |
+| `Desk__DailySearchQueries` | `50` | Daily Perplexity query limit |
+| `Desk__DailyDocuments` | `50` | Daily article limit |
+| `Desk__DatabasePath` | `../../data/runtime/signal-desk.db` | SQLite file (local only; `{mode}` is replaced) |
+
+**AI settings.**
+
+| Variable | Meaning |
+| --- | --- |
+| `AiServices__TypeSafeModel` | TypeSafe model (`jev-1.14.0`) |
+| `AiServices__PlannerModel` | OpenAI model for query planning. Must be a model your account can use |
+| `AiServices__TransformerModel` | OpenAI model for signal and profile proposals |
+| `AiServices__BriefModel` | OpenAI model for briefs |
+| `AiServices__SearchQueryReserveUsd` | Budget reserved per search query |
+| `AiServices__DecisionReserveUsd` | Budget reserved per TypeSafe call |
+| `AiServices__OpenAiReserveUsd` | Budget reserved per OpenAI call |
+
+The reserve values are estimates that count against the daily budget. They are not billing guarantees. Set provider-side spending limits as well.
+
+**Hosted (Azure App Service).** Add provider keys and any settings above under *Configuration > Application settings*. Hosted startup refuses `Desk__EnableLiveAi` or `Desk__EnableCollectors` set to `true`, and `/v1/*` returns 503 until the hosted database exists.
+
+**GitHub Actions secrets.**
+
+| Secret | Used by | Notes |
+| --- | --- | --- |
+| `AZUREAPPSERVICE_PUBLISHPROFILE_C4B7B610A411455197B49EABBB628FC3` | `.github/workflows/main_he-ai-poc-test.yml` deploy job | Publish profile for the `he-ai-poc-test` App Service. The name is referenced by the workflow, so keep it unchanged |
+
+CI (restore, format, build, and tests) needs no secrets. Tests use fake providers and temporary SQLite files. Do not add provider keys to GitHub secrets. The running app reads them from App Service settings at runtime.
+
 ## Azure status
 
 The existing `he-ai-poc-test` deployment workflow/secret reference is preserved. Its build now restores locked dependencies, audits packages, checks formatting, runs offline tests and explicitly publishes the API project. No local database or local configuration file is published.
