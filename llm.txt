@@ -1,0 +1,76 @@
+# Signal Desk API: guide for LLM clients
+
+Signal Desk is a .NET 11 API. It collects public satellite-industry news, turns it into attributed signals about competitors, routes uncertain items to human review, and writes evidence-grounded briefs. This file explains what the API does, where its specs are, and the order to call things in.
+
+## Specs and tools
+- OpenAPI 3 JSON (machine-readable, use this): `{base}/openapi/v1.json`
+- Scalar UI (human-readable): `{base}/scalar/v1`
+- Liveness: `GET {base}/health/live` returns `{"status":"alive"}`.
+- Readiness: `GET {base}/health/ready` returns `{"status":"ready","mode":"sample|live"}` when the database is available. Otherwise it returns 503.
+
+Base URLs:
+- Local development: `http://localhost:5188` (run with `dotnet run --project src/SignalDesk.Api --launch-profile http`).
+- Azure (hosted): `https://he-ai-poc-test-dhgdawetauctbffa.westus3-01.azurewebsites.net`. Hosted database support is deferred, so every `/v1/*` route and `/health/ready` return 503 there until it is provisioned. Only `/health/live`, `/openapi/v1.json`, and `/scalar/v1` work.
+
+## Modes
+- `sample`: fictional evaluation data. No provider calls. This is the default.
+- `live`: stored records, plus paid AI calls and collection when enabled in configuration. Live mode runs locally only for now.
+- Sample and live records are never mixed in one brief.
+
+Authentication: none. All endpoints are public.
+
+Errors: RFC 9457 problem details. Validation errors list the failing fields.
+
+## Core concepts
+- Publisher: a news outlet, such as `spacenews`. Has topics and a website.
+- Source: a publisher's collection route. `kind` is `search` (Perplexity discovery) or `rss` (a verified feed URL).
+- Run: one collection pass for one source. Has a `state`, a `step`, and counts.
+- Signal: a published, attributed statement about a competitor. Each one links to source paragraphs (`paragraphs[].id`).
+- Review item: a held article waiting for a human decision.
+- AI execution: a recorded provider call, including its budget reservation.
+- Brief: a grounded write-up of selected signals.
+
+## Ingestion: order of operations
+1. Confirm the mode and budget. `GET /health/ready` shows `mode`. `GET /v1/ai/executions` shows recent spend.
+2. Find a source. `GET /v1/sources` lists sources with `approved`, `allowArticleCapture`, `nextDueUtc`, and `status`.
+3. Approve it. `PATCH /v1/sources/{id}` with:
+   - `kind`: `search` or `rss`.
+   - `url`: the source URL. It must match the publisher's website.
+   - `approved`: `true`.
+   - `allowArticleCapture`: `false` keeps discovery metadata only, which is the safer default. `true` also stores article text.
+   - `rightsAcknowledgement`: at least 20 characters stating the basis for collecting this source. Do not invent one. Ask the user.
+   Responses: `204` on success, `400` for an invalid kind or acknowledgement, `404` if the source is unknown.
+4. Start a run. `POST /v1/ingestion/runs` with `{"sourceId":"spacenews"}`. It returns `202` with the run and a `Location` header. Responses: `400` if the source is not approved, `503` if live collection is disabled.
+5. Poll progress. `GET /v1/ingestion/runs/{id}/status` every `pollAfterSeconds` seconds until `isTerminal` is `true`. Steps run in this order:
+   1. `evaluating-captured`: re-check articles captured by earlier runs.
+   2. `discovering`: plan queries and search the source.
+   3. `processing`: fetch and evaluate each article. `processed` of `total` and `percentComplete` show progress.
+   4. `finalizing`: save counts and the next due time.
+   5. `finished`: success.
+   `state` is the outcome: `queued`, `running`, `succeeded`, `failed`, or `enqueue-failed`.
+6. Read the outcome. `GET /v1/ingestion/runs/{id}` returns `published`, `reviewed`, `discovered`, and `error`.
+7. Handle failures. If `state` is `failed` or `enqueue-failed`, call `POST /v1/ingestion/runs/{id}/retry`. It returns `202` with a new run. Any other state returns `409`.
+8. Clear the review queue. `GET /v1/review/items` lists held items, each with `reason`, `evidenceJson`, and `proposalJson`. Read the evidence first, then call `POST /v1/review/items/{id}/decision` with `{"accept":true|false,"note":"..."}`. `note` must be at least 10 characters. Each item can be decided once. Responses: `204`, `400`, `404`, or `409`.
+9. Read published results. `GET /v1/signals` supports `competitorId`, `publisherId`, `category`, `minImportance`, `after`, `before`, `query`, `cursor`, and `limit` (1-100). Use `nextCursor` to page. `GET /v1/catalog` returns everything and supports `If-None-Match` with the `ETag` for `304` responses.
+
+## Budget and recovery rules
+- A call reserves its estimated cost against the daily budget before it is sent. Over-budget work is deferred, not dropped.
+- A call in the `reserved`, `dispatched`, or `failed-or-unknown` state blocks automatic replay of the same request.
+- To resolve one, check the provider dashboard, then call `POST /v1/ai/executions/{id}/allow-retry` with a note of at least 20 characters. Responses: `204`, `404`, or `409` (if the request is still running or was not in an unresolved state).
+- Reservations are estimates, not provider bills.
+
+## Brief workflow
+1. Choose 1-20 signals from `GET /v1/signals`. They must all be sample or all be live.
+2. Call `POST /v1/briefs` with `records` (full signal objects, not just IDs), `objective` (1-3000 characters), `audience` (`Strategy leadership`, `Business development`, `Executive team`, or `Product and partnerships`), and `mode` (`Strategic brief`, `Summarize`, or `Explain`).
+3. Read `text`. Facts are one sentence each with a `[record-id]` citation. Lines starting with `Interpretation:`, `Evidence gap:`, `Next verification:`, or `Next step:` are commentary.
+4. Handle failures: `400` for invalid input, `429` if two briefs are already running (retry shortly), `503` if the draft could not be grounded (choose different records or narrow the objective), and `504` on timeout.
+
+## Endpoint summary
+- Catalog: `GET /v1/catalog`, `GET /v1/signals`, `GET /v1/signals/{id}`, `GET /v1/competitors`, `GET /v1/competitors/{id}`, `GET /v1/competitors/{id}/activity`, `GET /v1/publishers`, `GET /v1/publishers/{id}`
+- Sources: `GET /v1/sources`, `PATCH /v1/sources/{id}`
+- Ingestion: `POST /v1/ingestion/runs`, `GET /v1/ingestion/runs/{id}`, `GET /v1/ingestion/runs/{id}/status`, `POST /v1/ingestion/runs/{id}/retry`
+- Review: `GET /v1/review/items`, `POST /v1/review/items/{id}/decision`
+- AI: `GET /v1/ai/services`, `GET /v1/ai/executions`, `POST /v1/ai/executions/{id}/allow-retry`
+- Briefs: `POST /v1/briefs`
+
+For request and response shapes, read the OpenAPI JSON at `/openapi/v1.json`.
