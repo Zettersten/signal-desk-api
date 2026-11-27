@@ -31,11 +31,11 @@ Errors: RFC 9457 problem details. Validation errors list the failing fields.
 - Brief: a grounded write-up of selected signals.
 
 ## Ingestion: order of operations
-1. Confirm the mode and budget. `GET /health/ready` shows `mode`. `GET /v1/ai/executions` shows recent spend.
+1. Confirm the mode and spend. `GET /health/ready` shows `mode`. `GET /v1/ai/executions` shows recent spend against the daily budget.
 2. Find a source. `GET /v1/sources` lists sources with `approved`, `allowArticleCapture`, `nextDueUtc`, and `status`.
 3. Approve it. `PATCH /v1/sources/{id}` with:
    - `kind`: `search` or `rss`.
-   - `url`: the source URL. It must match the publisher's website.
+   - `url`: the source URL. It must pass the API's URL checks for the publisher (HTTPS and a public host, on the publisher's own domain).
    - `approved`: `true`.
    - `allowArticleCapture`: `false` keeps discovery metadata only, which is the safer default. `true` also stores article text.
    - `rightsAcknowledgement`: at least 20 characters stating the basis for collecting this source. Do not invent one. Ask the user.
