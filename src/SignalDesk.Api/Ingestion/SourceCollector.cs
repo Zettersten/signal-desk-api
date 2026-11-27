@@ -21,6 +21,8 @@ public sealed class SourceCollector(
         run.State = "running";
         source.LastAttemptUtc = clock.GetUtcNow().UtcDateTime;
         await db.SaveChangesAsync(ct);
+        var publishedBefore = await DocumentIdsAsync(db, source.Id, "published", ct);
+        var reviewBefore = await DocumentIdsAsync(db, source.Id, "review", ct);
         run.Step = "evaluating-captured";
         await db.SaveChangesAsync(ct);
         var pending = await db.Documents.Where(x => x.SourceId == source.Id && x.State == "captured").ToArrayAsync(ct);
@@ -42,8 +44,7 @@ public sealed class SourceCollector(
         }
         run.Step = "finalizing";
         await db.SaveChangesAsync(ct);
-        run.Published = await db.Documents.CountAsync(x => x.SourceId == source.Id && x.State == "published", ct);
-        run.Reviewed = await db.Documents.CountAsync(x => x.SourceId == source.Id && x.State == "review", ct);
+        await AssignRunCountsAsync(run, source.Id, publishedBefore, reviewBefore, db, ct);
         run.Step = "finished";
         run.State = "succeeded";
         run.FinishedUtc = clock.GetUtcNow().UtcDateTime;
@@ -127,6 +128,20 @@ public sealed class SourceCollector(
         stored.State = "processed";
         stored.LastCheckedUtc = clock.GetUtcNow().UtcDateTime;
         await db.SaveChangesAsync(ct);
+    }
+
+    private static async Task<HashSet<string>> DocumentIdsAsync(DeskDb db, string sourceId, string state, CancellationToken ct) =>
+        (await db.Documents.Where(x => x.SourceId == sourceId && x.State == state).Select(x => x.Id).ToArrayAsync(ct))
+            .ToHashSet(StringComparer.Ordinal);
+
+    // Counts only the documents this run moved into a state, not source totals.
+    private static async Task AssignRunCountsAsync(CollectionRun run, string sourceId, HashSet<string> publishedBefore,
+        HashSet<string> reviewBefore, DeskDb db, CancellationToken ct)
+    {
+        var publishedAfter = await DocumentIdsAsync(db, sourceId, "published", ct);
+        var reviewAfter = await DocumentIdsAsync(db, sourceId, "review", ct);
+        run.Published = publishedAfter.Except(publishedBefore, StringComparer.Ordinal).Count();
+        run.Reviewed = reviewAfter.Except(reviewBefore, StringComparer.Ordinal).Count();
     }
 
     private async Task EvaluateAsync(DocumentRow document, CancellationToken ct)
